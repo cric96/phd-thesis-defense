@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
 %
-\documentclass[presentation, 9pt, aspectratio=169]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+\documentclass[presentation, 9pt]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[T1]{fontenc}
@@ -64,7 +64,7 @@
 \institute[DISI, Univ.\ Bologna]
 {%Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\
 \textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna \\[0.1cm]
-\textbf{Final Year PhD Report}\\[0.15cm]
+\textbf{PhD defense}\\[0.15cm]
 }
 %
 \renewcommand{\dateseparator}{/}
@@ -247,7 +247,7 @@ basicstyle=\ttfamily\scriptsize}
 \vspace{0.5 cm}
 \only<2>{\bold{\huge{How to engineer such applications?}}}
 \end{frame}
-\begin{frame}{Context -- Cont.}
+\begin{frame}{Thesis Goal}
   \begin{alertblock}{Thesis goal}
     Finds a \emph{systematic} methodology to \bold{synthesize} and \bold{deploy} \emph{\underline{self-organising}} behaviours of \bold{predictable} outcomes
   \end{alertblock}
@@ -258,134 +258,137 @@ basicstyle=\ttfamily\scriptsize}
       \item \bold{how} to deploy the computation \emph{\underline{smartly}} (deployment)      
     \end{itemize}
   \end{exampleblock}
-  \begin{alertblock}{State-of-the art}
-    \begin{itemize}
-      \item Manual design
-      \begin{itemize}
-        \item Programming languages with primitives and \emph{collective} abstractions for CPSW (e.g., \emph{\underline{aggregate programming}})
-        \item {\bold{\faThumbsUp}} Declarative \& modular \lbl{\faThumbsDown} Limited adaptability w.r.t., non-stationary envs, high knowledge requirements 
-      \end{itemize}
-      \item Automatic design
-      \begin{itemize}
-        \item Machine learning methodologies for synthesize collective  behaviours (e.g., \emph{\underline{multi-agent reinforcement learning}})
-        \item {\bold{\faThumbsUp}} Learn by doing \lbl{\faThumbsDown} Black-box, not predictable 
-      \end{itemize}
-    \end{itemize}
-  \end{alertblock}
 \end{frame}
-
+\begin{frame}{State-of-the-art}
+  \begin{exampleblock}{Manual design}
+  Approaches in which the collective behaviour is \emph{\underline{manually}} designed
+  \begin{itemize}
+    \item Finite state machines, rule-based systems, etc
+    \begin{itemize}
+      \item bottom-up, high knowledge requirements and the collective behaviour come up by \emph{\underline{emergence}}
+    \end{itemize}
+    \item Programming languages with primitives and \emph{collective} abstractions for CPSW (macroprogramming)
+    \begin{itemize}
+      \item Buzz: a language for programming swarms of drones
+      \item \bold{Aggregate computing}: a language for programming collective behaviours based on computational fields
+    \end{itemize}
+  \end{itemize}  
+  \end{exampleblock}
+\end{frame}
+\begin{frame}{State-of-the-art -- Cont.}
+  \begin{exampleblock}{Automatic design}
+    \begin{itemize}
+      \item Genetic algorithms, evolutionary strategies, etc
+      \begin{itemize}
+        \item \emph{\underline{Black-box}} approach, not predictable, hard to scale-up in complexity.
+      \end{itemize}
+      \item Single-agent machine learning (e.g., reinforcement learning)
+      \begin{itemize}
+        \item \emph{\underline{Single-agent}} not suitable for collective behaviours (i.e., uncontrolled emergents)
+      \end{itemize}
+      \item \bold{Many-agent reinforcement learning}: a way to learn collective behaviours with a large population of agents
+    \end{itemize}
+  \end{exampleblock}
+  
+\end{frame}
+\begin{frame}[plain]
+\begin{center}
+\Huge{\bold{Aggregate Computing}}
+\end{center}
+\centering
+\large{Program the aggregate, not the individual}
+\\ \vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{img/ac.png}
+\end{frame}
+\begin{frame}{Aggregate Computing -- Foundational and Programming Model}
+\begin{exampleblock}{Computational Fields}
+  A computational field is conceptually a function from the space of devices to a set of values
+  \\[0.1cm]
+  \begin{center}
+  \includegraphics[width=0.3\textwidth]{img/3d-gradient.png}
+  \includegraphics[width=0.28\textwidth]{img/channel.png}
+  \includegraphics[width=0.3\textwidth]{img/scr-result.png}
+  \end{center}
+\end{exampleblock}
+\begin{exampleblock}{Field Calculus}
+  A language for programming computational fields.
+  
+  \bold{Primitives}:
+  \begin{itemize}
+    \item \emph{\underline{neighbours interaction}}: a way to express the interaction with the neighbours (\emph{space})
+    \item \emph{\underline{field-evolution}}: a way to express the evolution of the field in \emph{time}
+    \item \emph{\underline{space-partition}}: a way to express the space partitioning 
+  \end{itemize}
+\end{exampleblock}  
+\end{frame}
+\begin{frame}{Programming Model -- High-level Idea}
+  Qui ci va una slide con un esempio visuale di AC (dove si mostra la composizionalità)
+\end{frame}
+\begin{frame}{Aggregate Computing -- Execution Model}
+Qui si discute del modo round based di esecuzione
+\end{frame}
+\begin{frame}[plain]
+  \begin{center}
+\huge{\bold{Many-agent Reinforcement Learning}}
+  \end{center}
+  \begin{center}
+    \large{A multi-agent learning environment in which agents learn to coordinate their actions to achieve a common goal}
+  \end{center}
+\end{frame} 
+\begin{frame}{Many-agent Reinforcement Learning -- Model}
+Qui discutere velocemente delle entità sfruttando un formalismo di Markov games
+\end{frame}
+\begin{frame}{Going towards the state-of-the-art}
+Qui discutere dei problemi e delle research question che si pongono
+\end{frame}
 \begin{frame}{Contribution -- One slide}
 \centering{\huge{Models, tools, and algorithms are built around a \emph{\underline{programming language}}}}
 \\[0.5cm]
 \includegraphics[width=\textwidth]{img/contribution.drawio.pdf}
 \end{frame}
-\begin{frame}{Aggregate Computing -- One slide}
-  \hsplit{
 
-  \begin{block}{\footnotesize Self-org-like computational model}
-  \scriptsize
+\begin{frame}{Hybrid Aggregate computing -- Research Roadmap}
   
-  \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbours}\vspace{0.1cm}
-  
-  \lbl{behaviour:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
-  
-  
-  \lbl{formal model of executions:} event structures \vspace{0.1cm}
-  
-  %\lbl{semantics:} (1) device; (2) network; (3) global comp.
-  \end{block}
-  
-  %\uncover<3-4>{
-  \begin{block}{}
-  \scriptsize
-  
-  \lbl{abstraction:} \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
-  
-  \lbl{formal core language:} field calculus~\cite{vbdacp:ac:survey:jlamp}\vspace{0.1cm}
-  
-  \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
-  
-  \centering
-  \imgv{0.22}{channel.pdf}
-  \end{block}
-  
-  \tiny \fullcite{vbdacp:ac:survey:jlamp}%\fullcite{beal2015aggregate-programming}
-  
-  %}
-  }{
-  
-  %\uncover<2-4>{
-  \begin{block}{\footnotesize Why?}
-    \scriptsize
-    
-    {\bold{\faThumbsUp}} \, Decouple the collective specification from the IT networks  \vspace{0.1cm}
-    
-    {\bold{\faThumbsUp}} \, Scale naturally with nodes in the systems  \vspace{0.1cm}
-     
-    {\bold{\faThumbsUp}} \, High-level abstractions to devise applications
-    
-    %\lbl{semantics:} (1) device; (2) network; (3) global comp.
-  \end{block}
-  %}
-  
-  %\uncover<4-4>{
-  \begin{block}{} %{Engineering approach}
-  \imgv{0.32}{layerss.pdf}
-  \tiny \fullcite{bpv:aggregate:programming}
-  \end{block}
-  %}
-  }
-  
-\end{frame}
-\begin{frame}{Hybrid Aggregate computing}
-\vspace{-0.5cm}
-\begin{columns}[t]
-\begin{column}{0.31\textwidth}
-\begin{exampleblock}{Research roadmap~\cite{DBLP:conf/icdcs/AguzziCV22}}
-  \footnotesize{
-  Highlights goals:
-\begin{itemize}
-  \item \underline{functionality} (e.g., a certain collective behaviour)
-  \item \underline{non-functionality} (e.g., energy consumption)
-\end{itemize}}
-and means:
-\begin{itemize}
-  \item \underline{algorithms}
-  \item \underline{execution strategy}
-  \item \underline{system structures}
-\end{itemize}
-  \includegraphics[width=\textwidth]{img/roadmap.pdf}
-\end{exampleblock}
-\end{column}
-
-\begin{column}{0.31\textwidth}
-\begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
-  \footnotesize{
-  %% breaks the above sentence in itemize:
+  \bold{Highlight goals}:
   \begin{itemize}
-    \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
-    \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
-    \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
-  \end{itemize}}
-  \includegraphics[width=\textwidth]{img/synthesis-3.png}
-\end{exampleblock}
-\end{column}
-\begin{column}{0.31\textwidth}
-\begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
-  \footnotesize{
-  \begin{itemize}
-    \item The aggregete computing model does not \underline{enforce} a global-synchronization
-    \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
-    \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
+    \item \underline{functionality} (e.g., a certain collective behaviour)
+    \item \underline{non-functionality} (e.g., energy consumption)
   \end{itemize}
-  }
-  \includegraphics[width=\textwidth]{img/algorithm-learning.png}
-\end{exampleblock}
-\end{column}  
-\end{columns}
+  \bold{and means}:
+  \begin{itemize}
+    \item \underline{system structures}
+    \item \underline{execution strategy}
+    \item \underline{algorithms}
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{img/roadmap.pdf}
+  \end{center}
 \end{frame}
-
-\begin{frame}{Hybrid Aggregate computing -- Cont.}
+\begin{frame}{Hybrid Aggregate Computing -- Execution Strategy}
+  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
+    \begin{itemize}
+      \item The aggregete computing model does not \underline{enforce} a global-synchronization
+      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
+      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
+    \end{itemize}
+    \begin{center}
+    \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
+    \end{center}
+  \end{exampleblock}
+\end{frame}
+\begin{frame}{Hybrid Aggregate computing -- Algorithms}
+  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
+    \begin{itemize}
+      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
+      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
+      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
+    \end{itemize}
+    \begin{center}
+    \includegraphics[width=0.5\textwidth]{img/synthesis-3.png}
+    \end{center}
+  \end{exampleblock}
+\end{frame}
+\begin{frame}{Hybrid Aggregate computing -- Algorithms}
   
 \begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
   \begin{itemize}
@@ -401,49 +404,36 @@ and means:
   \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
 \end{exampleblock}
 \end{frame}
+\begin{frame}{Hybrid Aggregate computing -- Algorithms}
+  
+  \begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
+    Qui continua facendo vedere l'algoritmo
+  \end{exampleblock}
+  \end{frame}
 \begin{frame}{Engineering Methodologies}
-\vspace{-0.5cm}
-\begin{columns}[t]
-\begin{column}{0.31\textwidth}
 \begin{exampleblock}{FRASP~\cite{frasp}}
-\footnotesize{
+  
   Functional reactive approach to \emph{\underline{self-organisation}} programming
-}
 \begin{itemize}
   \item Inspired by \emph{\underline{functional reactive programming}}, but \emph{\underline{distributed}}
   \item Implementation in a Scala DSL
 \end{itemize}
 \includegraphics[width=\textwidth]{img/interactions.pdf}
 \end{exampleblock}
-\end{column}
-\begin{column}{0.31\textwidth}
+\end{frame}
+\begin{frame}{Engineering Methodologies}
 \begin{exampleblock}{MacroSwarm~\cite{macroswarm}}
-\footnotesize{
   \begin{itemize}
-  \item An API for expressing \underline{\emph{swarm}} behaviours
-  \item \emph{\underline{Composable}}: behaviours can be composed together
-  \item \emph{\underline{Extensive}}: cover a wide range of swarm behaviours (e.g., aggregation, flocking, ...)
-\end{itemize}
-}
+    \item An API for expressing \underline{\emph{swarm}} behaviours
+    \item \emph{\underline{Composable}}: behaviours can be composed together
+    \item \emph{\underline{Extensive}}: cover a wide range of swarm behaviours (e.g., aggregation, flocking, ...)
+  \end{itemize}
 \includegraphics[width=\textwidth]{img/architecture-macro.drawio.pdf}
 \end{exampleblock}
-\end{column}
-\begin{column}{0.31\textwidth}
-\footnotesize{
-\begin{exampleblock}{Swarm-Sensing API~\cite{swarm-clustering}}
-  \begin{itemize}
-    \item distributed \& fault-tollerent sensing based clustering
-    \item Useful pattern collective pattern for detecting \emph{\underline{hot-spots}} in the environment
-  \end{itemize}
-  \centering
-  \includegraphics[width=0.7\textwidth]{img/after-merge.png}
-\end{exampleblock}
-}  
-\end{column}
-\end{columns}
 \end{frame}
 \begin{frame}{Engineering Methodologies -- Cont.}
   \begin{itemize}
+    \item \emph{\underline{Swarm Sensing API}}~\cite{swarm-clustering}: \emph{\underline{distributed}} and \emph{\underline{fault-tollerent}} sensing
     \item \emph{\underline{Dev Ops for CPSW}}~\cite{casadei2022towards}: \emph{\underline{continuous integration}} of the \emph{\underline{software}} and the \emph{\underline{physical}} parts of the system
     \item \emph{\underline{High-level abstractions for Distributed sensing}}~\cite{aguzzi2022dynamic}: \emph{\underline{distributed}} and \emph{\underline{fault-tollerent}} sensing
     \item \emph{\underline{Pulverisation architecture}}~\cite{aguzzi2021towards}: A \emph{\underline{opportunistic}} model to \emph{\underline{deploy}} aggregate programs
@@ -513,3 +503,112 @@ and means:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Aggregate Computing -- One slide}
+  \hsplit{
+
+  \begin{block}{\footnotesize Self-org-like computational model}
+  \scriptsize
+  
+  \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbours}\vspace{0.1cm}
+  
+  \lbl{behaviour:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
+  
+  
+  \lbl{formal model of executions:} event structures \vspace{0.1cm}
+  
+  %\lbl{semantics:} (1) device; (2) network; (3) global comp.
+  \end{block}
+  
+  %\uncover<3-4>{
+  \begin{block}{}
+  \scriptsize
+  
+  \lbl{abstraction:} \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
+  
+  \lbl{formal core language:} field calculus~\cite{vbdacp:ac:survey:jlamp}\vspace{0.1cm}
+  
+  \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
+  
+  \centering
+  \imgv{0.22}{channel.pdf}
+  \end{block}
+  
+  \tiny \fullcite{vbdacp:ac:survey:jlamp}%\fullcite{beal2015aggregate-programming}
+  
+  %}
+  }{
+  
+  %\uncover<2-4>{
+  \begin{block}{\footnotesize Why?}
+    \scriptsize
+    
+    {\bold{\faThumbsUp}} \, Decouple the collective specification from the IT networks  \vspace{0.1cm}
+    
+    {\bold{\faThumbsUp}} \, Scale naturally with nodes in the systems  \vspace{0.1cm}
+     
+    {\bold{\faThumbsUp}} \, High-level abstractions to devise applications
+    
+    %\lbl{semantics:} (1) device; (2) network; (3) global comp.
+  \end{block}
+  %}
+  
+  %\uncover<4-4>{
+  \begin{block}{} %{Engineering approach}
+  \imgv{0.32}{layerss.pdf}
+  \tiny \fullcite{bpv:aggregate:programming}
+  \end{block}
+  %}
+  }
+  
+\end{frame}
+
+
+\begin{frame}{Hybrid Aggregate computing}
+  \vspace{-0.5cm}
+  \begin{columns}[t]
+  \begin{column}{0.31\textwidth}
+  \begin{exampleblock}{Research roadmap~\cite{DBLP:conf/icdcs/AguzziCV22}}
+    \footnotesize{
+    Highlights goals:
+  \begin{itemize}
+    \item \underline{functionality} (e.g., a certain collective behaviour)
+    \item \underline{non-functionality} (e.g., energy consumption)
+  \end{itemize}}
+  and means:
+  \begin{itemize}
+    \item \underline{algorithms}
+    \item \underline{execution strategy}
+    \item \underline{system structures}
+  \end{itemize}
+    \includegraphics[width=\textwidth]{img/roadmap.pdf}
+  \end{exampleblock}
+  \end{column}
+  
+  \begin{column}{0.31\textwidth}
+  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
+    \footnotesize{
+    %% breaks the above sentence in itemize:
+    \begin{itemize}
+      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
+      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
+      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
+    \end{itemize}}
+    \includegraphics[width=\textwidth]{img/synthesis-3.png}
+  \end{exampleblock}
+  \end{column}
+  \begin{column}{0.31\textwidth}
+  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
+    \footnotesize{
+    \begin{itemize}
+      \item The aggregete computing model does not \underline{enforce} a global-synchronization
+      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
+      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
+    \end{itemize}
+    }
+    \includegraphics[width=\textwidth]{img/algorithm-learning.png}
+  \end{exampleblock}
+  \end{column}  
+  \end{columns}
+  \end{frame}
