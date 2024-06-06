@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
 %
-\documentclass[presentation, 9pt]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+\documentclass[presentation, 9pt,169]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[T1]{fontenc}
@@ -20,7 +20,11 @@
 \usepackage{minted}
 \usepackage{hyperref}
 \usepackage{multicol}
-\setminted[scala]{fontsize=\small,frame=lines,baselinestretch=1,obeytabs=true, tabsize=2}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
+\AfterEndEnvironment{minted}{\end{tcolorbox}}%
+\setminted[scala]{fontsize=\small,baselinestretch=1,obeytabs=true, tabsize=2}
 \setminted[yaml]{fontsize=\large,frame=lines,linenos,baselinestretch=1,obeytabs=true, tabsize=2}
 \usepackage[ddmmyyyy]{datetime}
 \setminted{fontsize=\footnotesize}
@@ -199,25 +203,39 @@ basicstyle=\ttfamily\scriptsize}
 
 %%%%
 %/////////
-\begin{frame}
-\centering
-\bold{\Huge{Cyber-Physical Swarms (CPSW)}}
-\begin{multicols}{3}
-	\begin{figure}
-		\large{Many \bold{networked} agents}\\[0.1cm]
-		\includegraphics[width=0.3\textwidth]{img/network.png}
-	\end{figure}
-	\begin{figure}
-		\large{Cyber-physical systems}\\[0.1cm]
-		\includegraphics[width=0.2\textwidth]{img/cps.png}
-	\end{figure}
-	\begin{figure}
-		\large{\bold{Collective} intelligence}\\[0.1cm]
-		\includegraphics[width=0.15\textwidth]{img/ci.png}
-	\end{figure}
-\end{multicols}
-\end{frame}
-
+\begin{frame}{Context}\label{context:start}
+  \begin{exampleblock}{Modern IT systems are more and more \bold{complex}}
+    \begin{itemize}
+      \item increasing availability of wearable/mobile/embedded/flying devices
+      \item increasing availability of heterogeneous wireless networks
+      \item increasing availability of computational resources (edge/fog/cloud computing)
+      \item increasing production of data \bold{everywhere} and \bold{anytime}
+    \end{itemize}
+  \end{exampleblock}
+  \begin{alertblock}{\bold{The} challenge}
+    Consider the worst-case possible scenario
+    \begin{itemize}
+      \item \bold{zillion} of devices \emph{unpredictably} located and moving in a space
+      \item heterogeneous displacement, \bold{pervasive} sensing/actuation
+      \item computational services are \bold{contextual} (proximity-based) and \emph{dynamic} 
+    \end{itemize}
+  \end{alertblock}
+  \begin{center}
+  \Large{How can we \bold{engineering} such systems?}
+  \end{center}
+  \begin{center}
+    \Large{What are the right \bold{abstractions}?}
+    \end{center}
+  \end{frame}
+  \begin{frame}[plain,c]
+    \begin{center}
+    {\Huge \textbf{Cyber-Physical Swarms} (CPSW)}\\
+    {\large Systems composed of \bold{large} set of component executing a \bold{collective} task strongly relying on component \bold{interactions} and showing \bold{inherent} \emph{adaptivity}.}\\[0.3cm]
+    \includegraphics[width=0.28\textwidth]{img/swarms.jpg}
+    \includegraphics[width=0.333\textwidth]{img/coldplay.jpg}
+    \includegraphics[width=0.333\textwidth]{img/traffic.jpg}	
+    \end{center}
+  \end{frame}
 \begin{frame}{Context -- Cont.}
 \begin{alertblock}{Applications}
   \begin{multicols}{3}
@@ -231,7 +249,7 @@ basicstyle=\ttfamily\scriptsize}
   \end{multicols}
 \end{alertblock}
 
-\begin{exampleblock}{Challenges}
+\begin{block}{Challenges}
   \begin{multicols}{3}
     \begin{itemize}
       \item (Unwanted) Emergents
@@ -242,10 +260,8 @@ basicstyle=\ttfamily\scriptsize}
       \item Complex \& layered architectures
     \end{itemize}
   \end{multicols}
-\end{exampleblock}
+\end{block}
 \centering
-\vspace{0.5 cm}
-\only<2>{\bold{\huge{How to engineer such applications?}}}
 \end{frame}
 \begin{frame}{Thesis Goal}
   \begin{alertblock}{Thesis goal}
@@ -273,9 +289,8 @@ basicstyle=\ttfamily\scriptsize}
       \item \bold{Aggregate computing}: a language for programming collective behaviours based on computational fields
     \end{itemize}
   \end{itemize}  
+  
   \end{exampleblock}
-\end{frame}
-\begin{frame}{State-of-the-art -- Cont.}
   \begin{exampleblock}{Automatic design}
     \begin{itemize}
       \item Genetic algorithms, evolutionary strategies, etc
@@ -289,7 +304,6 @@ basicstyle=\ttfamily\scriptsize}
       \item \bold{Many-agent reinforcement learning}: a way to learn collective behaviours with a large population of agents
     \end{itemize}
   \end{exampleblock}
-  
 \end{frame}
 \begin{frame}[plain]
 \begin{center}
@@ -321,8 +335,17 @@ basicstyle=\ttfamily\scriptsize}
   \end{itemize}
 \end{exampleblock}  
 \end{frame}
-\begin{frame}{Programming Model -- High-level Idea}
-  Qui ci va una slide con un esempio visuale di AC (dove si mostra la composizionalità)
+\begin{frame}[fragile]{Programming Model -- High-level Idea}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{img/functions.pdf}
+    \includegraphics[width=0.48\textwidth]{img/channel.png}
+  \end{center}
+\begin{minted}{scala}
+def channel(source: Boolean, dest: Boolean, width: Double): Double {
+  dilate(gradient(source) + gradient(dest) <= distance(source,dest), width)
+}
+  \end{minted}
+
 \end{frame}
 \begin{frame}{Aggregate Computing -- Execution Model}
 Qui si discute del modo round based di esecuzione
