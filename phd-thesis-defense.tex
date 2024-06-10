@@ -212,7 +212,7 @@ basicstyle=\ttfamily\scriptsize}
       \item increasing production of data \bold{everywhere} and \bold{anytime}
     \end{itemize}
   \end{exampleblock}
-  \begin{alertblock}{\bold{The} challenge}
+  \begin{alertblock}{\underline{\textbf{The}} challenge}
     Consider the worst-case possible scenario
     \begin{itemize}
       \item \bold{zillion} of devices \emph{unpredictably} located and moving in a space
@@ -315,7 +315,7 @@ basicstyle=\ttfamily\scriptsize}
 \includegraphics[width=0.8\textwidth]{img/ac.png}
 \end{frame}
 \begin{frame}{Aggregate Computing -- Foundational and Programming Model}
-\begin{exampleblock}{Computational Fields}
+\begin{block}{Computational Fields}
   A computational field is conceptually a function from the space of devices to a set of values
   \\[0.1cm]
   \begin{center}
@@ -323,8 +323,8 @@ basicstyle=\ttfamily\scriptsize}
   \includegraphics[width=0.28\textwidth]{img/channel.png}
   \includegraphics[width=0.3\textwidth]{img/scr-result.png}
   \end{center}
-\end{exampleblock}
-\begin{exampleblock}{Field Calculus}
+\end{block}
+\begin{alertblock}{Field Calculus}
   A language for programming computational fields.
   
   \bold{Primitives}:
@@ -333,7 +333,7 @@ basicstyle=\ttfamily\scriptsize}
     \item \emph{\underline{field-evolution}}: a way to express the evolution of the field in \emph{time}
     \item \emph{\underline{space-partition}}: a way to express the space partitioning 
   \end{itemize}
-\end{exampleblock}  
+\end{alertblock}  
 \end{frame}
 \begin{frame}[fragile]{Programming Model -- High-level Idea}
   \begin{center}
@@ -347,25 +347,59 @@ def channel(source: Boolean, dest: Boolean, width: Double): Double {
   \end{minted}
 
 \end{frame}
-\begin{frame}{Aggregate Computing -- Execution Model}
-Qui si discute del modo round based di esecuzione
+\begin{frame}{Aggregate Computing -- Execution Model \& System Model}
+\centering
+\includegraphics[width=0.8\textwidth]{img/execution-step.png}
 \end{frame}
 \begin{frame}[plain]
   \begin{center}
 \huge{\bold{Many-agent Reinforcement Learning}}
   \end{center}
   \begin{center}
-    \large{A multi-agent learning environment in which agents learn to coordinate their actions to achieve a common goal}
+    \large{A multi-agent learning environment in which a \bold{large} group agents learn to \bold{coordinate} their actions to achieve a \emph{\underline{collective}} goal}.
   \end{center}
 \end{frame} 
-\begin{frame}{Many-agent Reinforcement Learning -- Model}
-Qui discutere velocemente delle entità sfruttando un formalismo di Markov games
+
+\begin{frame}{Many-agent Reinforcement Learning -- Cont}
+\begin{alertblock}{A tentative formal model}
+  SwarMDP \faArrowRight \, a formal model composed of a \emph{Swarming agent $\mathbb{A}$} and an \emph{Environment $\mathbb{E}$}.
+  \begin{itemize}
+    \item The agent $\mathbb{A}$ \faArrowRight \, observation and action spaces, a reward signal and a policy
+    \item The environment $\mathbb{E}$ \faArrowRight \, a state space, a population swarming agents, a transition function, a global reward function.
+    \item The system evolves in discrete time steps, where the agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards. 
+    \item \bold{Goal}: learn a policy $\pi$ that maximises the expected return $\mathbb{E}[\sum_{t=0}^{\infty} \gamma^t R_t]$
+  \end{itemize}
+\end{alertblock}
+\begin{exampleblock}{Challenges \faArrowRight \, Solutions}
+  \begin{itemize}
+    \item \emph{\underline{Large-Scale}} \faArrowRight \, Homogenous agents (i.e., share the same policy) with \bold{decentralised} execution
+    \item \emph{\underline{Partial Observability}} \faArrowRight \, Use \emph{\underline{ neighborhood communication}} to share the information and reaching a collective behaviour through emergence
+    \item \emph{\underline{Non-Stationarity}} \faArrowRight \, Use \emph{\underline{centralised}} learning with a global view of the environment
+    \item \emph{\underline{Global-Local}} \faArrowRight \, Use both \emph{local} and \emph{global} rewards to learn
+  \end{itemize}
+\end{exampleblock}
+
 \end{frame}
 \begin{frame}{Going towards the state-of-the-art}
-Qui discutere dei problemi e delle research question che si pongono
+  \begin{alertblock}{Engineering Perspective}
+    \begin{itemize}
+    \item \emph{API Design}: Close the gap between aggregate computing and real-world applications.%, making complex CPS behaviors easier to program.
+    \item \emph{Programming Model}: Develop a natural way to express collective behaviors.%, simplifying the development process.
+    \item \emph{Intelligent Deployment}: Optimize the deployment of aggregate programs across diverse infrastructures, enhancing adaptability and efficiency.
+    \item \emph{Practical Tooling}: Create user-friendly tools for prototyping and deploying aggregate programs, fostering broader adoption.
+    \item \textbf{\underline{Key Motivation}}: Aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPWSs.
+    \end{itemize}
+    \end{alertblock}
+  \begin{alertblock}{Learning Perspective}
+      \begin{itemize}
+      \item \emph{AC for Learning}: Utilize aggregate computing to build robust and resilient learning infrastructures, e.g., for federated learning.
+      \item \emph{Learning for AC}: Leverage machine learning to dynamically optimize and adapt the aggregate computing model itself.
+      \item \textbf{\underline{Key Motivation}}: Learning is essential to adapt aggregate computing to the highly dynamic and complex nature of real-world environments.
+      \end{itemize}
+  \end{alertblock}
 \end{frame}
 \begin{frame}{Contribution -- One slide}
-\centering{\huge{Models, tools, and algorithms are built around a \emph{\underline{programming language}}}}
+\centering{\huge{\underline{Languaged-based soft eng} \faArrowRight \, Models, tools, and algorithms are built around a \emph{\underline{programming language}}}}
 \\[0.5cm]
 \includegraphics[width=\textwidth]{img/contribution.drawio.pdf}
 \end{frame}
@@ -387,18 +421,51 @@ Qui discutere dei problemi e delle research question che si pongono
     \includegraphics[width=0.6\textwidth]{img/roadmap.pdf}
   \end{center}
 \end{frame}
-\begin{frame}{Hybrid Aggregate Computing -- Execution Strategy}
-  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
-    \begin{itemize}
-      \item The aggregete computing model does not \underline{enforce} a global-synchronization
-      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
-      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
-    \end{itemize}
-    \begin{center}
-    \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
-    \end{center}
-  \end{exampleblock}
+\begin{frame}{Optimizing Execution Policies in Aggregate Computing}
+
+\begin{alertblock}{Problem}
+Given the same aggregate program, there exist different execution policies that may prioritize:
+\begin{itemize}
+\item Convergence Time: Quickly reach a stable global configuration from an initial configuration.
+\item Consumption Reduction: Reach the same global configuration while minimizing resource consumption.
+\end{itemize}
+\end{alertblock}
+\begin{alertblock}{Programmatic Solution}
+\begin{itemize}
+\item Programmable Schedulers: Allow modifying collective scheduling dynamics based on the obtained results.
+\item Limitation: These schedulers are static and do not adapt to changes in the environment.
+\end{itemize}
+\end{alertblock}
 \end{frame}
+
+\begin{frame}{Machine Learning for Optimization}
+\begin{alertblock}{Idea}
+Use machine learning techniques (Q-learning) to learn adaptive and optimized schedulers.
+\end{alertblock}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
+\end{center}
+\begin{alertblock}{Approach}
+\begin{itemize}
+\item Q-learning with shared experience: a method for learning in CPSW systems.
+\item Goal: Reduce the consumption of \emph{self-stabilizing} collective computations.
+\item State: Result of aggregate computation in a fixed time window.
+\item Reward: Based on the goal, it rewards convergence or energy consumption, guiding the learning towards the optimal policy.
+\end{itemize}
+\end{alertblock}
+\end{frame}
+%\begin{frame}{Hybrid Aggregate Computing -- Execution Strategy}
+%  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
+%    \begin{itemize}
+%      \item The aggregete computing model does not \underline{enforce} a global-synchronization
+%      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline%{rounds}} of the aggregate program
+%      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
+%    \end{itemize}
+%    \begin{center}
+%    \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
+%    \end{center}
+%  \end{exampleblock}
+%\end{frame}
 \begin{frame}{Hybrid Aggregate computing -- Algorithms}
   \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
     \begin{itemize}
