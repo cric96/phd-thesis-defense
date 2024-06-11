@@ -399,37 +399,44 @@ def channel(source: Boolean, dest: Boolean, width: Double): Double {
   \end{alertblock}
 \end{frame}
 \begin{frame}{Contribution -- One slide}
-\centering{\huge{\underline{Languaged-based soft eng} \faArrowRight \, Models, tools, and algorithms are built around a \emph{\underline{programming language}}}}
+\centering{\huge{\textbf{\underline{Languaged-based} software engineering for CPSWs}}}
 \\[0.5cm]
-\includegraphics[width=\textwidth]{img/contribution.drawio.pdf}
+\begin{center}
+\fbox{\includegraphics[width=0.95\textwidth]{img/contribution.drawio.pdf}}
+\end{center}
 \end{frame}
 
 \begin{frame}{Hybrid Aggregate computing -- Research Roadmap}
-  
-  \bold{Highlight goals}:
-  \begin{itemize}
-    \item \underline{functionality} (e.g., a certain collective behaviour)
-    \item \underline{non-functionality} (e.g., energy consumption)
-  \end{itemize}
-  \bold{and means}:
-  \begin{itemize}
-    \item \underline{system structures}
-    \item \underline{execution strategy}
-    \item \underline{algorithms}
-  \end{itemize}
+  \begin{columns}
+    \begin{column}{0.48\textwidth}
+      \bold{Goals}:
+      \begin{itemize}
+        \item \underline{functionality}
+        \item \underline{non-functionality}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \bold{Means}
+      \begin{itemize}
+        \item \underline{system structures}
+        \item \underline{execution strategy}
+        \item \underline{algorithms}
+      \end{itemize}
+    \end{column}
+  \end{columns}
   \begin{center}
-    \includegraphics[width=0.6\textwidth]{img/roadmap.pdf}
+    \fbox{\includegraphics[width=0.8\textwidth]{img/roadmap.pdf}}
   \end{center}
 \end{frame}
-\begin{frame}{Optimizing Execution Policies in Aggregate Computing}
+\begin{frame}{Optimizing Execution Policies in Collective Computation}
 
-\begin{alertblock}{Problem}
+\begin{block}{Problem}
 Given the same aggregate program, there exist different execution policies that may prioritize:
 \begin{itemize}
 \item Convergence Time: Quickly reach a stable global configuration from an initial configuration.
 \item Consumption Reduction: Reach the same global configuration while minimizing resource consumption.
 \end{itemize}
-\end{alertblock}
+\end{block}
 \begin{alertblock}{Programmatic Solution}
 \begin{itemize}
 \item Programmable Schedulers: Allow modifying collective scheduling dynamics based on the obtained results.
@@ -438,21 +445,21 @@ Given the same aggregate program, there exist different execution policies that 
 \end{alertblock}
 \end{frame}
 
-\begin{frame}{Machine Learning for Optimization}
+\begin{frame}{Shared-experience Q-Learning for Adaptive Schedulers}
 \begin{alertblock}{Idea}
-Use machine learning techniques (Q-learning) to learn adaptive and optimized schedulers.
+Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedulers.
 \end{alertblock}
 \begin{center}
   \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
 \end{center}
-\begin{alertblock}{Approach}
+\begin{exampleblock}{Contribution}
 \begin{itemize}
-\item Q-learning with shared experience: a method for learning in CPSW systems.
-\item Goal: Reduce the consumption of \emph{self-stabilizing} collective computations.
-\item State: Result of aggregate computation in a fixed time window.
-\item Reward: Based on the goal, it rewards convergence or energy consumption, guiding the learning towards the optimal policy.
+\item Q-learning with \underline{shared experience}: a method for learning in CPSW systems.
+\item \bold{Goal}: Reduce the consumption of \emph{self-stabilizing} collective computations.
+\item \bold{State}: Result of aggregate computation in a fixed time window.
+\item \bold{Reward}: Based on the goal, it rewards convergence or energy consumption, guiding the learning towards the optimal policy.
 \end{itemize}
-\end{alertblock}
+\end{exampleblock}
 \end{frame}
 %\begin{frame}{Hybrid Aggregate Computing -- Execution Strategy}
 %  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
@@ -466,40 +473,99 @@ Use machine learning techniques (Q-learning) to learn adaptive and optimized sch
 %    \end{center}
 %  \end{exampleblock}
 %\end{frame}
-\begin{frame}{Hybrid Aggregate computing -- Algorithms}
-  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
-    \begin{itemize}
-      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
-      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
-      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
-    \end{itemize}
-    \begin{center}
-    \includegraphics[width=0.5\textwidth]{img/synthesis-3.png}
-    \end{center}
-  \end{exampleblock}
-\end{frame}
-\begin{frame}{Hybrid Aggregate computing -- Algorithms}
+\begin{frame}{Learning for AC: Collective Program Sketching}
+
+  \begin{block}{Problem}
   
-\begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
   \begin{itemize}
-    \item Aggregate computing is used to \emph{\underline{inform}} the learning process
-    \begin{itemize}
-      \item Speeding up the training \& Reducing the search space
-    \end{itemize} 
-    \item Field used as a way to produce a stygmertic representation of the environment
-    \item Learning performed through \emph{\underline{deep reinforcement learning}}
-    \item Graph-neural networks used as a policy function approximator
+  \item Aggregate computing relies on a layered architecture, where high-level APIs depend on low-level compositional and self-healing blocks. 
+  \item The effectiveness of coordination within these blocks is often dependent on the specific environmental dynamics (like high mobility or frequent failures)
   \end{itemize}
-\centering
+  \end{block}
+  \begin{alertblock}{Programmatic Solution}
+    \begin{itemize}
+      \item Current approaches to adapting coordination blocks often rely on programmatic solutions based on \underline{\bold{heuristics}} (e.g., SVD). 
+      \item Limitation: these solutions tend to be \bold{highly} specific and require \bold{in-depth} knowledge of the final deployment environment, limiting their \underline{flexibility} and \underline{generalizability}.
+    \end{itemize}
+  \end{alertblock}
+  \end{frame}
+  
+  \begin{frame}{Learning for AC: Collective Program Sketching}
+  
+  \begin{alertblock}{Idea}
+  \begin{itemize}
+    \item Blocks as partial programs with ``holes'' that depend on environmental dynamics.
+  \end{itemize}
+  \end{alertblock}
+  \begin{center}
+  \includegraphics[width=0.45\textwidth]{img/synthesis-3.png}
+  \end{center}
+  \begin{exampleblock}{Contribution}
+  \begin{itemize}
+  \item Shared-experience Q-learning for collective program sketching.
+  \item \textbf{State:} A window of previous outputs performed by the neighborhood.
+  \item \textbf{Reward:} Collective difference with respect to the expected behavior.
+  \item \textbf{Result:}  synthesis a block that performs on par wit state-of-the-art solutions.
+  \end{itemize}
+  \end{exampleblock}
+\end{frame}  
+%\begin{frame}{Hybrid Aggregate computing -- Algorithms}
+%  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
+%    \begin{itemize}
+%      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
+%      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
+%      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
+%    \end{itemize}
+%    \begin{center}
+%    \includegraphics[width=0.5\textwidth]{img/synthesis-3.png}
+%    \end{center}
+%  \end{exampleblock}
+%\end{frame}
+\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
+\begin{block}{Problem}
+\begin{itemize}
+  \item Learning in CPSWs is particularly challenging due to complexity in handling partial observability and global-local rewards. 
+\end{itemize}
+\end{block}
+\begin{alertblock}{Learning Solutions}
+  \begin{itemize}
+    \item Graph-neural networks: a way to handling distributed controllers in CPSWs.
+    \item Still limited by the complexity in managing the global-local rewards and partial observability.
+  \end{itemize}
+\end{alertblock}
+\end{frame}
+\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
+\begin{alertblock}{Idea}
+  Improve the learning process using AC to \emph{inform} policies with collective information.
+\end{alertblock}
+\begin{center}
   \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
+\end{center}
+\begin{exampleblock}{Contribution}
+  \begin{itemize}
+    \item Field-informed reinforcement learning~\cite{acgnn}: fields used as a way to produce a stygmertic representation of the environment.
+    \item Graph neural networks used as a policy function approximator.
+    \item Learning performed with a Deep Graph-Q Learning
+    \item Result: a faster and more scalable policy w.r.t., Deep Graph-Q Learning without field information.
+  \end{itemize}
 \end{exampleblock}
 \end{frame}
-\begin{frame}{Hybrid Aggregate computing -- Algorithms}
-  
-  \begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
-    Qui continua facendo vedere l'algoritmo
-  \end{exampleblock}
-  \end{frame}
+%\begin{frame}{Hybrid Aggregate computing -- Algorithms}
+%\begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
+%  \begin{itemize}
+%    \item Aggregate computing is used to \emph{\underline{inform}} the learning process
+%    \begin{itemize}
+%      \item Speeding up the training \& Reducing the search space
+%    \end{itemize} 
+%    \item Field used as a way to produce a stygmertic representation of the environment
+%    \item Learning performed through \emph{\underline{deep reinforcement learning}}
+%    \item Graph-neural networks used as a policy function approximator
+%  \end{itemize}
+%\centering
+%  \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
+%\end{exampleblock}
+%\end{frame}
+
 \begin{frame}{Engineering Methodologies}
 \begin{exampleblock}{FRASP~\cite{frasp}}
   
