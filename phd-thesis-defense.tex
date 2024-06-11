@@ -10,6 +10,8 @@
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees,positioning,shapes}
 \usepackage{wasysym}
 \usepackage{amsmath,blkarray}
 \usepackage{soul}
@@ -565,7 +567,43 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
 %  \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
 %\end{exampleblock}
 %\end{frame}
+\begin{frame}[fragile]{Engineering Methodologies}
+  \bold{Areas of Improvement:}
 
+  \begin{enumerate}
+  \item \textbf{Programming Models \& APIs:}
+  
+  \begin{itemize}
+  \item \textbf{FRASP:} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
+  \item \textbf{MacroSwarm:} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
+  \end{itemize}
+  
+  \item \textbf{Distributed Sensing Deployment:}
+  
+  \begin{itemize}
+  \item \textbf{Swarm Sensing API~\cite{swarm-clustering}:} Distributed and fault-tolerant sensing.
+  \item \textbf{High-Level Abstractions for Distributed Sensing~\cite{aguzzi2022dynamic}:} Distributed and fault-tolerant sensing.
+  \item \textbf{Pulverised Architecture:~\cite{aguzzi2021towards}} Opportunistic deployment of aggregate programs.
+  \end{itemize}
+  
+  
+  \item \textbf{DevOps; Continuous Integration:}
+  
+  \begin{itemize}
+  \item \textbf{DevOps for CPSW~\cite{casadei2022towards}:} Continuous integration of software and physical parts of the system.
+  \end{itemize}
+  
+  \end{enumerate}
+
+  \bold{Tools:}
+  
+  \begin{itemize}
+  \item \textbf{ScaRLib~\cite{domini2023scarlib}:} Cooperative multi-agent reinforcement learning tool (supports various learning schemes, integrates with PyTorch).
+  \item \textbf{ScaFi-Web~\cite{aguzzi2021scafi}:} Web-based simulator for aggregate computing (useful for teaching and prototyping).
+  \end{itemize}
+  
+  
+\end{frame}
 \begin{frame}{Engineering Methodologies}
 \begin{exampleblock}{FRASP~\cite{frasp}}
   
@@ -599,33 +637,7 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \includegraphics[width=0.53\textwidth]{img/screenshot.png}
   
 \end{frame}
-\begin{frame}{Tools}
-  \vspace{-0.5cm}
-  \begin{columns}[t]
-    \begin{column}{0.48\textwidth}
-      \begin{exampleblock}{ScaRLib~\cite{domini2023scarlib}}
-        \footnotesize{
-        \begin{itemize}
-          \item A tool for cooperative many agent reinforcement learning
-          \item Support different learning scheme (centralised, decentralised, mixed)
-          \item Binding with state-of-the-art reinforcement learning libraries (e.g., \emph{\underline{PyTorch}})
-        \end{itemize}}
-        \includegraphics[width=\textwidth]{img/flock.png}
-      \end{exampleblock}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \begin{exampleblock}{ScaFi-Web~\cite{aguzzi2021scafi}}
-        \footnotesize{
-        \begin{itemize}
-          \item A \emph{\underline{web-based}} simulator for aggregate computing
-          \item Useful for \emph{\underline{teaching}} and \emph{\underline{prototyping}}
-        \end{itemize}}
-        \centering
-        \includegraphics[width=0.5\textwidth]{img/gradient-scafi.png}
-      \end{exampleblock}
-    \end{column}
-  \end{columns}
-\end{frame}
+
 
 \begin{frame}{Conclusion and Future Works}
 \begin{itemize}
@@ -758,7 +770,7 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
     \footnotesize{
     \begin{itemize}
-      \item The aggregete computing model does not \underline{enforce} a global-synchronization
+      \item The aggregate computing model does not \underline{enforce} a global-synchronization
       \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
       \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
     \end{itemize}
@@ -767,4 +779,32 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \end{exampleblock}
   \end{column}  
   \end{columns}
+  \end{frame}
+
+  \begin{frame}{Tools}
+    \vspace{-0.5cm}
+    \begin{columns}[t]
+      \begin{column}{0.48\textwidth}
+        \begin{exampleblock}{ScaRLib~\cite{domini2023scarlib}}
+          \footnotesize{
+          \begin{itemize}
+            \item A tool for cooperative many agent reinforcement learning
+            \item Support different learning scheme (centralised, decentralised, mixed)
+            \item Binding with state-of-the-art reinforcement learning libraries (e.g., \emph{\underline{PyTorch}})
+          \end{itemize}}
+          \includegraphics[width=\textwidth]{img/flock.png}
+        \end{exampleblock}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+        \begin{exampleblock}{ScaFi-Web~\cite{aguzzi2021scafi}}
+          \footnotesize{
+          \begin{itemize}
+            \item A \emph{\underline{web-based}} simulator for aggregate computing
+            \item Useful for \emph{\underline{teaching}} and \emph{\underline{prototyping}}
+          \end{itemize}}
+          \centering
+          \includegraphics[width=0.5\textwidth]{img/gradient-scafi.png}
+        \end{exampleblock}
+      \end{column}
+    \end{columns}
   \end{frame}
