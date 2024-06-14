@@ -24,6 +24,7 @@
 \usepackage{multicol}
 \usepackage{tcolorbox}
 \usepackage{etoolbox}
+\usepackage[ruled]{algorithm2e}
 \BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
 \AfterEndEnvironment{minted}{\end{tcolorbox}}%
 \setminted[scala]{fontsize=\small,baselinestretch=1,obeytabs=true, tabsize=2}
@@ -205,39 +206,20 @@ basicstyle=\ttfamily\scriptsize}
 
 %%%%
 %/////////
-\begin{frame}{Context}\label{context:start}
-  \begin{exampleblock}{Modern IT systems are more and more \bold{complex}}
-    \begin{itemize}
-      \item increasing availability of wearable/mobile/embedded/flying devices
-      \item increasing availability of heterogeneous wireless networks
-      \item increasing availability of computational resources (edge/fog/cloud computing)
-      \item increasing production of data \bold{everywhere} and \bold{anytime}
-    \end{itemize}
-  \end{exampleblock}
-  \begin{alertblock}{\underline{\textbf{The}} challenge}
-    Consider the worst-case possible scenario
-    \begin{itemize}
-      \item \bold{zillion} of devices \emph{unpredictably} located and moving in a space
-      \item heterogeneous displacement, \bold{pervasive} sensing/actuation
-      \item computational services are \bold{contextual} (proximity-based) and \emph{dynamic} 
-    \end{itemize}
-  \end{alertblock}
+
+\begin{frame}[plain,c]
   \begin{center}
-  \Large{How can we \bold{engineering} such systems?}
+  {\Huge \textbf{Cyber-Physical Swarms} (CPSW)}\\
+  {\large Systems composed of \textbf{large} sets of components executing \textbf{collective} tasks, strongly relying on component \textbf{interactions}, and showing \textbf{inherent} \emph{adaptivity}.}\\[0.5cm] 
+  \begin{figure}
+      \centering
+      \includegraphics[width=0.3\textwidth]{img/swarms.jpg}
+      \includegraphics[width=0.3\textwidth]{img/coldplay.jpg}
+      \includegraphics[width=0.3\textwidth]{img/traffic.jpg} 
+      %\caption{Examples of Cyber-Physical Swarms}
+  \end{figure}
   \end{center}
-  \begin{center}
-    \Large{What are the right \bold{abstractions}?}
-    \end{center}
-  \end{frame}
-  \begin{frame}[plain,c]
-    \begin{center}
-    {\Huge \textbf{Cyber-Physical Swarms} (CPSW)}\\
-    {\large Systems composed of \bold{large} set of component executing a \bold{collective} task strongly relying on component \bold{interactions} and showing \bold{inherent} \emph{adaptivity}.}\\[0.3cm]
-    \includegraphics[width=0.28\textwidth]{img/swarms.jpg}
-    \includegraphics[width=0.333\textwidth]{img/coldplay.jpg}
-    \includegraphics[width=0.333\textwidth]{img/traffic.jpg}	
-    \end{center}
-  \end{frame}
+\end{frame}
 \begin{frame}{Context -- Cont.}
 \begin{alertblock}{Applications}
   \begin{multicols}{3}
@@ -254,7 +236,7 @@ basicstyle=\ttfamily\scriptsize}
 \begin{block}{Challenges}
   \begin{multicols}{3}
     \begin{itemize}
-      \item (Unwanted) Emergents
+      \item (Unwanted) emergents
       \item Local to global mapping
       \item Scale
       \item Failures
@@ -263,50 +245,65 @@ basicstyle=\ttfamily\scriptsize}
     \end{itemize}
   \end{multicols}
 \end{block}
+\begin{center}
+  \Large{How can we \bold{engineer} such systems?}
+  \end{center}
+  \begin{center}
+    \Large{What are the right \bold{abstractions}?}
+  \end{center}
+  \begin{center}
+    \Large{This thesis focuses on these questions!}
+  \end{center}
 \centering
 \end{frame}
 \begin{frame}{Thesis Goal}
-  \begin{alertblock}{Thesis goal}
-    Finds a \emph{systematic} methodology to \bold{synthesize} and \bold{deploy} \emph{\underline{self-organising}} behaviours of \bold{predictable} outcomes
+  \begin{alertblock}{Thesis Goal}
+    %Devise methodologies and practices to \textbf{synthesize} and \textbf{deploy} \emph{\underline{self-organizing}} behaviors with \textbf{predictable} outcomes.
+    Develop a software engineering framework for CPSWs, 
+    incorporating \emph{manual} and \emph{automatic} techniques to enable the \underline{design}, \underline{synthesis}, and \underline{deployment} of \emph{self-organizing} behaviors with \emph{scalable} and \emph{robust} outcomes.
   \end{alertblock}
-  \begin{exampleblock}{Multi-Faceted scientific problem}
+
+  \begin{exampleblock}{Multi-Faceted Scientific Problem}
     \begin{itemize}
-      \item \bold{how} to express collective behaviours (algorithms \& methodologies)
-      \item \bold{how} to execute specific behaviours (execution models \& middleware dynamics)
-      \item \bold{how} to deploy the computation \emph{\underline{smartly}} (deployment)      
+      \item \textbf{How} to express collective behaviors (algorithms \& methodologies)
+      \item \textbf{How} to execute specific behaviors (execution models \& middleware dynamics)
+      \item \textbf{How} to deploy the computation \emph{\underline{smartly}} (deployment) 
     \end{itemize}
   \end{exampleblock}
 \end{frame}
+
 \begin{frame}{State-of-the-art}
-  \begin{exampleblock}{Manual design}
-  Approaches in which the collective behaviour is \emph{\underline{manually}} designed
-  \begin{itemize}
-    \item Finite state machines, rule-based systems, etc
+
+  \begin{exampleblock}{Manual Design}
+    Approaches in which the collective behavior is \emph{\underline{manually}} designed:
     \begin{itemize}
-      \item bottom-up, high knowledge requirements and the collective behaviour come up by \emph{\underline{emergence}}
-    \end{itemize}
-    \item Programming languages with primitives and \emph{collective} abstractions for CPSW (macroprogramming)
-    \begin{itemize}
-      \item Buzz: a language for programming swarms of drones
-      \item \bold{Aggregate computing}: a language for programming collective behaviours based on computational fields
-    \end{itemize}
-  \end{itemize}  
-  
+      \item Finite state machines, rule-based systems, etc.
+        \begin{itemize}
+          \item Bottom-up, high knowledge requirements, and the collective behavior emerges.
+        \end{itemize}
+      \item Programming languages with primitives and \emph{collective} abstractions for CPSW (macroprogramming):
+        \begin{itemize}
+          \item Buzz: a language for programming swarms of drones.
+          \item \textbf{Aggregate computing}: a language for programming collective behaviors based on computational fields.
+        \end{itemize}
+    \end{itemize}  
   \end{exampleblock}
-  \begin{exampleblock}{Automatic design}
+
+  \begin{exampleblock}{Automatic Design}
     \begin{itemize}
-      \item Genetic algorithms, evolutionary strategies, etc
-      \begin{itemize}
-        \item \emph{\underline{Black-box}} approach, not predictable, hard to scale-up in complexity.
-      \end{itemize}
-      \item Single-agent machine learning (e.g., reinforcement learning)
-      \begin{itemize}
-        \item \emph{\underline{Single-agent}} not suitable for collective behaviours (i.e., uncontrolled emergents)
-      \end{itemize}
-      \item \bold{Many-agent reinforcement learning}: a way to learn collective behaviours with a large population of agents
+      \item Genetic algorithms, evolutionary strategies, etc.
+        \begin{itemize}
+          \item \emph{\underline{Black-box}} approach, not predictable, hard to scale up in complexity.
+        \end{itemize}
+      \item Single-agent machine learning (e.g., reinforcement learning):
+        \begin{itemize}
+          \item \emph{\underline{Single-agent}} not suitable for collective behaviors (i.e., uncontrolled emergents).
+        \end{itemize}
+      \item \textbf{Many-agent reinforcement learning}: a way to learn collective behaviors with a large population of agents.
     \end{itemize}
   \end{exampleblock}
 \end{frame}
+
 \begin{frame}[plain]
 \begin{center}
 \Huge{\bold{Aggregate Computing}}
@@ -316,257 +313,337 @@ basicstyle=\ttfamily\scriptsize}
 \\ \vspace{0.5cm}
 \includegraphics[width=0.8\textwidth]{img/ac.png}
 \end{frame}
-\begin{frame}{Aggregate Computing -- Foundational and Programming Model}
-\begin{block}{Computational Fields}
-  A computational field is conceptually a function from the space of devices to a set of values
-  \\[0.1cm]
-  \begin{center}
-  \includegraphics[width=0.3\textwidth]{img/3d-gradient.png}
-  \includegraphics[width=0.28\textwidth]{img/channel.png}
-  \includegraphics[width=0.3\textwidth]{img/scr-result.png}
-  \end{center}
-\end{block}
-\begin{alertblock}{Field Calculus}
-  A language for programming computational fields.
-  
-  \bold{Primitives}:
-  \begin{itemize}
-    \item \emph{\underline{neighbours interaction}}: a way to express the interaction with the neighbours (\emph{space})
-    \item \emph{\underline{field-evolution}}: a way to express the evolution of the field in \emph{time}
-    \item \emph{\underline{space-partition}}: a way to express the space partitioning 
-  \end{itemize}
-\end{alertblock}  
-\end{frame}
-\begin{frame}[fragile]{Programming Model -- High-level Idea}
-  \begin{center}
-    \includegraphics[width=0.48\textwidth]{img/functions.pdf}
-    \includegraphics[width=0.48\textwidth]{img/channel.png}
-  \end{center}
-\begin{minted}{scala}
-def channel(source: Boolean, dest: Boolean, width: Double): Double {
-  dilate(gradient(source) + gradient(dest) <= distance(source,dest), width)
-}
-  \end{minted}
+\begin{frame}{Aggregate Computing -- One slide}
+  \hsplit{
 
+  \begin{block}{\footnotesize Self-org-like computational model}
+  \scriptsize
+  
+  \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbors}\vspace{0.1cm}
+  
+  \lbl{behavior:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
+  
+  
+  \lbl{formal model of executions:} event structures \vspace{0.1cm}
+  
+  \end{block}
+  
+  \begin{block}{}
+  \scriptsize
+  
+  \lbl{formal core language:} field calculus~\cite{vbdacp:ac:survey:jlamp}\vspace{0.1cm}
+  
+  \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
+  
+  \centering
+  \imgv{0.22}{channel.pdf}
+  \end{block}
+  
+  }{
+  \begin{block}{\footnotesize Why?}
+    \scriptsize
+    
+    {\bold{\faThumbsUp}} \, Decouple the collective specification from the IT networks  \vspace{0.1cm}
+    
+    {\bold{\faThumbsUp}} \, Scale naturally with nodes in the systems  \vspace{0.1cm}
+     
+    {\bold{\faThumbsUp}} \, High-level abstractions to devise applications
+    
+    %\lbl{semantics:} (1) device; (2) network; (3) global comp.
+  \end{block}
+  %}
+  
+  \begin{block}{} %{Engineering approach}
+    \scriptsize
+  \lbl{abstraction:} \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
+    \lbl{examples:} \bo{temperature fields}, \bo{actuation fields} \vspace{0.1cm}
+    \begin{center}
+      \includegraphics[width=0.3\textwidth]{img/3d-gradient.png}
+      \includegraphics[width=0.28\textwidth]{img/channel.png}
+      \includegraphics[width=0.3\textwidth]{img/scr-result.png}
+      \end{center}
+  \tiny \fullcite{bpv:aggregate:programming}
+  \end{block}
+  %}
+  }
+  
 \end{frame}
-\begin{frame}{Aggregate Computing -- Execution Model \& System Model}
-\centering
-\includegraphics[width=0.8\textwidth]{img/execution-step.png}
-\end{frame}
+
 \begin{frame}[plain]
   \begin{center}
-\huge{\bold{Many-agent Reinforcement Learning}}
+\huge{\bold{Many-agent Reinforcement Learning}\footnote{\tiny\fullcite{yang2021many}}}\footnote{\tiny\fullcite{DBLP:journals/corr/abs-2209-03859}}
   \end{center}
   \begin{center}
     \large{A multi-agent learning environment in which a \bold{large} group agents learn to \bold{coordinate} their actions to achieve a \emph{\underline{collective}} goal}.
   \end{center}
 \end{frame} 
+\begin{frame}{Many-agent Reinforcement Learning}
 
-\begin{frame}{Many-agent Reinforcement Learning -- Cont}
-\begin{alertblock}{A tentative formal model}
-  SwarMDP \faArrowRight \, a formal model composed of a \emph{Swarming agent $\mathbb{A}$} and an \emph{Environment $\mathbb{E}$}.
-  \begin{itemize}
-    \item The agent $\mathbb{A}$ \faArrowRight \, observation and action spaces, a reward signal and a policy
-    \item The environment $\mathbb{E}$ \faArrowRight \, a state space, a population swarming agents, a transition function, a global reward function.
-    \item The system evolves in discrete time steps, where the agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards. 
-    \item \bold{Goal}: learn a policy $\pi$ that maximises the expected return $\mathbb{E}[\sum_{t=0}^{\infty} \gamma^t R_t]$
-  \end{itemize}
+\begin{alertblock}{A Tentative Formal Model: SwarMDP~\cite{vsovsic2016inverse}}
+    SwarMDP is a formal model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
+    \begin{itemize}
+      \item Agent $\mathbb{A}$: Has observation and action spaces, a reward signal, and a policy.
+      \item Environment $\mathbb{E}$: Has a state space, a population of swarming agents, a transition function, and a global reward function.
+      \item System Evolution: Evolves in discrete time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
+      \item \textbf{Goal}: Learn a policy $\pi$ that maximizes the \textbf{expected return}.
+    \end{itemize}
 \end{alertblock}
-\begin{exampleblock}{Challenges \faArrowRight \, Solutions}
+
+\begin{block}{Learning in SwarMDP}
   \begin{itemize}
-    \item \emph{\underline{Large-Scale}} \faArrowRight \, Homogenous agents (i.e., share the same policy) with \bold{decentralised} execution
-    \item \emph{\underline{Partial Observability}} \faArrowRight \, Use \emph{\underline{ neighborhood communication}} to share the information and reaching a collective behaviour through emergence
-    \item \emph{\underline{Non-Stationarity}} \faArrowRight \, Use \emph{\underline{centralised}} learning with a global view of the environment
-    \item \emph{\underline{Global-Local}} \faArrowRight \, Use both \emph{local} and \emph{global} rewards to learn
+    \item SwarMDP \faArrowRight \, large-scale handling via a \textbf{homogeneous} policy:
+      \begin{itemize}
+        \item The same policy is shared within the population.
+      \end{itemize}
+    \item Learning: \emph{centralized}, but execution is \textbf{decentralized}.
+    \item Algorithms:
+      \begin{itemize}
+        \item \underline{Mean-field RL \cite{yang2018mean}}: Learning by considering neighboring agents as an approximation of the global state.
+        \item \underline{Swarm RL \cite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
+      \end{itemize}
   \end{itemize}
-\end{exampleblock}
+\end{block}
 
 \end{frame}
-\begin{frame}{Going towards the state-of-the-art}
+
+\begin{frame}{Going Beyond the State-of-the-Art}
+
   \begin{alertblock}{Engineering Perspective}
     \begin{itemize}
-    \item \emph{API Design}: Close the gap between aggregate computing and real-world applications.%, making complex CPS behaviors easier to program.
-    \item \emph{Programming Model}: Develop a natural way to express collective behaviors.%, simplifying the development process.
-    \item \emph{Intelligent Deployment}: Optimize the deployment of aggregate programs across diverse infrastructures, enhancing adaptability and efficiency.
-    \item \emph{Practical Tooling}: Create user-friendly tools for prototyping and deploying aggregate programs, fostering broader adoption.
-    \item \textbf{\underline{Key Motivation}}: Aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPWSs.
+        \item \emph{API Design}: Bridge the gap between AC and real-world applications.
+        \item \emph{Programming Model}: Develop an intuitive way to express collective behaviors.
+        \item \emph{Intelligent Deployment}: Optimize the deployment of aggregate programs across diverse infrastructures, enhancing adaptability and efficiency.
+        \item \emph{Practical Tooling}: Create user-friendly tools for prototyping and deploying aggregate programs, fostering broader adoption.
+        \item \textbf{\underline{Key Motivation}}: Aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPSWs.
     \end{itemize}
-    \end{alertblock}
-  \begin{alertblock}{Learning Perspective}
-      \begin{itemize}
-      \item \emph{AC for Learning}: Utilize aggregate computing to build robust and resilient learning infrastructures, e.g., for federated learning.
-      \item \emph{Learning for AC}: Leverage machine learning to dynamically optimize and adapt the aggregate computing model itself.
-      \item \textbf{\underline{Key Motivation}}: Learning is essential to adapt aggregate computing to the highly dynamic and complex nature of real-world environments.
-      \end{itemize}
   \end{alertblock}
+
+  \begin{alertblock}{Learning Perspective}
+    \begin{itemize}
+        \item \emph{AC for Learning}: Utilize aggregate computing to build robust and resilient learning infrastructures, e.g., for federated learning or multi-agent RL.
+        \item \emph{Learning for AC}: Leverage machine learning techniques to dynamically optimize and adapt the aggregate computing model itself.
+        \item \textbf{\underline{Key Motivation}}: Learning is essential to adapt aggregate computing to the highly dynamic and complex nature of real-world environments.
+    \end{itemize}
+  \end{alertblock}
+
 \end{frame}
+
 \begin{frame}{Contribution -- One slide}
-\centering{\huge{\textbf{\underline{Languaged-based} software engineering for CPSWs}}}
+\centering{\huge{\textbf{\underline{Language-based} software engineering for CPSWs}}}
 \\[0.5cm]
-\begin{center}
-\fbox{\includegraphics[width=0.95\textwidth]{img/contribution.drawio.pdf}}
-\end{center}
-\end{frame}
+%\begin{center}
 
-\begin{frame}{Hybrid Aggregate computing -- Research Roadmap}
-  \begin{columns}
-    \begin{column}{0.48\textwidth}
-      \bold{Goals}:
+\includegraphics[width=\textwidth]{img/contribution.drawio.png}
+%\fbox{\includegraphics[width=0.95\textwidth]{img/contribution.drawio.pdf}}
+%\end{center}
+\end{frame}
+\begin{frame}{Hybrid Aggregate Computing}
+
+  \textbf{Areas of Improvement:}
+  
+  \begin{enumerate}
+  \item \textbf{Execution Policies for Efficiency:}
       \begin{itemize}
-        \item \underline{functionality}
-        \item \underline{non-functionality}
+      \item \textbf{Adaptive Collective Schedulers~\cite{DBLP:conf/acsos/AguzziCV22}:} Shared-experience Q-learning to dynamically optimize execution for convergence speed or resource consumption.
+      \item \textbf{Self-Stabilizing Systems:} Focus on reducing consumption while maintaining the self-healing properties of collectives.
       \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \bold{Means}
+  \item \textbf{Collective Program Synthesis:}
       \begin{itemize}
-        \item \underline{system structures}
-        \item \underline{execution strategy}
-        \item \underline{algorithms}
+      \item \textbf{Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}:} Q-learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
+      \item \textbf{Goal:} Automate the generation of adaptable blocks, overcoming limitations of heuristic-based approaches.
       \end{itemize}
-    \end{column}
-  \end{columns}
-  \begin{center}
-    \fbox{\includegraphics[width=0.8\textwidth]{img/roadmap.pdf}}
-  \end{center}
+  \item \textbf{\underline{Many-Agent RL through AC}:}
+      \begin{itemize}
+      \item \textbf{Field-Informed RL~\cite{acgnn}:} Aggregate information (fields) guides policy learning in complex CPSW environments.
+      \item \textbf{Graph Neural Networks:} Leverage graph neural networks for policy approximation, achieving faster and more scalable learning.
+      \end{itemize}
+  \end{enumerate}
+  
 \end{frame}
-\begin{frame}{Optimizing Execution Policies in Collective Computation}
-
-\begin{block}{Problem}
-Given the same aggregate program, there exist different execution policies that may prioritize:
-\begin{itemize}
-\item Convergence Time: Quickly reach a stable global configuration from an initial configuration.
-\item Consumption Reduction: Reach the same global configuration while minimizing resource consumption.
-\end{itemize}
-\end{block}
-\begin{alertblock}{Programmatic Solution}
-\begin{itemize}
-\item Programmable Schedulers: Allow modifying collective scheduling dynamics based on the obtained results.
-\item Limitation: These schedulers are static and do not adapt to changes in the environment.
-\end{itemize}
-\end{alertblock}
+\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
+\includegraphics[width=\textwidth]{img/contribution-focus.drawio.png}
 \end{frame}
-
-\begin{frame}{Shared-experience Q-Learning for Adaptive Schedulers}
-\begin{alertblock}{Idea}
-Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedulers.
-\end{alertblock}
-\begin{center}
-  \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
-\end{center}
-\begin{exampleblock}{Contribution}
-\begin{itemize}
-\item Q-learning with \underline{shared experience}: a method for learning in CPSW systems.
-\item \bold{Goal}: Reduce the consumption of \emph{self-stabilizing} collective computations.
-\item \bold{State}: Result of aggregate computation in a fixed time window.
-\item \bold{Reward}: Based on the goal, it rewards convergence or energy consumption, guiding the learning towards the optimal policy.
-\end{itemize}
-\end{exampleblock}
-\end{frame}
-%\begin{frame}{Hybrid Aggregate Computing -- Execution Strategy}
-%  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
-%    \begin{itemize}
-%      \item The aggregete computing model does not \underline{enforce} a global-synchronization
-%      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline%{rounds}} of the aggregate program
-%      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
-%    \end{itemize}
-%    \begin{center}
-%    \includegraphics[width=0.9\textwidth]{img/algorithm-learning.png}
-%    \end{center}
-%  \end{exampleblock}
-%\end{frame}
-\begin{frame}{Learning for AC: Collective Program Sketching}
+\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
 
   \begin{block}{Problem}
-  
-  \begin{itemize}
-  \item Aggregate computing relies on a layered architecture, where high-level APIs depend on low-level compositional and self-healing blocks. 
-  \item The effectiveness of coordination within these blocks is often dependent on the specific environmental dynamics (like high mobility or frequent failures)
-  \end{itemize}
-  \end{block}
-  \begin{alertblock}{Programmatic Solution}
     \begin{itemize}
-      \item Current approaches to adapting coordination blocks often rely on programmatic solutions based on \underline{\bold{heuristics}} (e.g., SVD). 
-      \item Limitation: these solutions tend to be \bold{highly} specific and require \bold{in-depth} knowledge of the final deployment environment, limiting their \underline{flexibility} and \underline{generalizability}.
+      \item \textbf{Collective Aspect}: The state typically lacks a global representation \faArrowRight \, \emph{\underline{partial observability}}.
+        \begin{itemize}
+          \item It is built through communication with neighbors.
+        \end{itemize}
+      \item \textbf{Variable Neighborhood}: 
+        \begin{itemize}
+          \item The need for a policy that accounts for neighborhood \emph{\underline{variability}}.
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{\textbf{Contribution}: Field-Informed Reinforcement Learning\footnote[frame]{\fullcite{acgnn}}} 
+    \begin{itemize}
+      \item \textbf{Fields}: Used to produce a \emph{\underline{stigmergic}} representation of the environment.
+      \begin{itemize}
+        \item \textbf{GNN}: Policy function approximator that handles neighborhood variability.
+        \item \textbf{Graph-Deep Q Learning}: Learning algorithm.
+        \item \textbf{Aggregate Computing}: Informs the learning process with computational fields.
+      \end{itemize}
     \end{itemize}
   \end{alertblock}
-  \end{frame}
-  
-  \begin{frame}{Learning for AC: Collective Program Sketching}
-  
-  \begin{alertblock}{Idea}
-  \begin{itemize}
-    \item Blocks as partial programs with ``holes'' that depend on environmental dynamics.
-  \end{itemize}
-  \end{alertblock}
-  \begin{center}
-  \includegraphics[width=0.45\textwidth]{img/synthesis-3.png}
-  \end{center}
-  \begin{exampleblock}{Contribution}
-  \begin{itemize}
-  \item Shared-experience Q-learning for collective program sketching.
-  \item \textbf{State:} A window of previous outputs performed by the neighborhood.
-  \item \textbf{Reward:} Collective difference with respect to the expected behavior.
-  \item \textbf{Result:}  synthesis a block that performs on par wit state-of-the-art solutions.
-  \end{itemize}
+
+\end{frame}
+\begin{frame}{FIRL: Graph Neural Networks}
+  \begin{exampleblock}{What}
+    A neural network architecture designed to work with graph-structured data.
   \end{exampleblock}
-\end{frame}  
-%\begin{frame}{Hybrid Aggregate computing -- Algorithms}
-%  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
-%    \begin{itemize}
-%      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
-%      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
-%      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
-%    \end{itemize}
-%    \begin{center}
-%    \includegraphics[width=0.5\textwidth]{img/synthesis-3.png}
-%    \end{center}
-%  \end{exampleblock}
-%\end{frame}
-\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
-\begin{block}{Problem}
-\begin{itemize}
-  \item Learning in CPSWs is particularly challenging due to complexity in handling partial observability and global-local rewards. 
-\end{itemize}
-\end{block}
-\begin{alertblock}{Learning Solutions}
-  \begin{itemize}
-    \item Graph-neural networks: a way to handling distributed controllers in CPSWs.
-    \item Still limited by the complexity in managing the global-local rewards and partial observability.
-  \end{itemize}
-\end{alertblock}
+
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{img/gnn.png}
+  \end{center}
+
+  \begin{block}{How}
+    \begin{itemize}
+      \item \textbf{Message Passing:} Update node representations based on their neighborhood.
+      \item \textbf{Aggregation:} Combine information from neighboring nodes.
+      \item \textbf{Update:} Modify node representations based on the aggregated information.
+    \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{Why}
+    \begin{itemize}
+      \item \textbf{Dual Interpretation:} Offers both global and local perspectives on graph data.
+      \item \textbf{Handles Variability:} Effectively addresses the varying structure and size of neighborhoods in graphs.
+    \end{itemize}
+  \end{alertblock}
 \end{frame}
-\begin{frame}{AC for Learning: Field-Informed Reinforcement Learning}
-\begin{alertblock}{Idea}
-  Improve the learning process using AC to \emph{inform} policies with collective information.
-\end{alertblock}
+
+\begin{frame}{FIRL: Graph-Deep Q Learning}
+  \begin{block}{What}
+    A learning algorithm which uses GNN as a policy function approximator
+  \end{block}
+  \begin{block}{How}
+    \begin{itemize}
+      \item \bold{Graph Experience replay}: store the experience in a replay buffer under the form of graphs
+      \item \bold{Target network}: use a target network to stabilize the learning and using GNNs
+    \end{itemize}
+  \end{block}
+  \begin{alertblock}{Why}
+    \begin{itemize}
+      \item Handle many-agent through shared experience pattern 
+      \item Follow a centralized learning approach but with a decentralized execution (thanks to GNN)
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+\begin{frame}{FIRL: Overall learning step}
+\includegraphics[width=\textwidth]{img/architecture.pdf}
+\end{frame}
+\begin{frame}{FIRL: Algorithm}
+  \begin{algorithm}[H]
+    \KwIn{Environment $\mathbb{E}$, Graph Replay $\mathcal{D}$, Target Network $\theta^-$, Current Network $\theta$, Exploration $\epsilon$}
+    \KwOut{Trained DQN $\theta$}
+    Initialize $\mathcal{D}$, $\theta$, $\theta^- \leftarrow \theta$\;
+    \While{not done}{
+        Observe $G_o$\;
+        $a \leftarrow \begin{cases}
+            \text{random action} & \text{if random } < \epsilon \\
+            argmax_{a_v} Q(G_o, \theta)[v](a_v) & \text{otherwise}
+        \end{cases}$\;
+        Execute $a$, observe $G_r$, $G_o'$\;
+        Store $(G_o, a, G_r, G_o')$ in $\mathcal{D}$\;
+        Sample batch $(G_o^b, a^b, G_r^b, G_o'^b)$ from $\mathcal{D}$\;
+        $y_v \leftarrow G_r^b[v] + \gamma \max_{a'} Q(G_o'^b[v], a'; \theta^-)$\;
+        $y_v^* \leftarrow Q(G_o^b[v], a^b[v]; \theta)$\;
+        $\theta \leftarrow \theta - \alpha \nabla_\theta \frac{1}{|G^b|} (y - y^*)^2$\;
+        \If{C steps}{ $\theta^- \leftarrow \theta$ }
+    }
+    \end{algorithm}
+\end{frame}
+\begin{frame}{FIRL: Simulation Setup}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}  % Adjusted width 
+        \begin{itemize}
+          \item \textbf{Setup}: Group of nodes in a 2D space, neighborhood based on spatial proximity.
+          \item \textbf{Goal}: Maximize the coverage of a spatial phenomenon (fire, pollution, etc.).
+          \item \textbf{Rewards}: 
+            \begin{itemize}
+              \item \emph{Inside Phenomenon}: Maximize the number of nodes inside the phenomenon.
+              \item \emph{Cohesion}: Minimize the number of isolated nodes.
+              \item \emph{Coverage}: Maximize the intersection of covered areas.
+            \end{itemize}
+          \item \textbf{States}: Relative position of nodes and potential field of the phenomenon.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}  % Adjusted width to match the text column
+      \centering
+      \includegraphics[width=\textwidth]{img/coverage-setup.png}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{FIRL: Algorithm}
+  \begin{algorithm}[H]
+    \KwIn{Environment $\mathbb{E}$, Graph Replay $\mathcal{D}$, Target Network $\theta^-$, Current Network $\theta$, Exploration $\epsilon$}
+    \KwOut{Trained DQN $\theta$}
+    Initialize $\mathcal{D}$, $\theta$, $\theta^- \leftarrow \theta$\;
+    \While{not done}{
+        Observe $G_o$\;
+        $a \leftarrow \begin{cases}
+            \text{random action} & \text{if random } < \epsilon \\
+            argmax_{a_v} Q(G_o, \theta)[v](a_v) & \text{otherwise}
+        \end{cases}$\;
+        Execute $a$, observe $G_r$, $G_o'$\;
+        Store $(G_o, a, G_r, G_o')$ in $\mathcal{D}$\;
+        Sample batch $(G_o^b, a^b, G_r^b, G_o'^b)$ from $\mathcal{D}$\;
+        $y_v \leftarrow G_r^b[v] + \gamma \max_{a'} Q(G_o'^b[v], a'; \theta^-)$\;
+        $y_v^* \leftarrow Q(G_o^b[v], a^b[v]; \theta)$\;
+        $\theta \leftarrow \theta - \alpha \nabla_\theta \frac{1}{|G^b|} (y - y^*)^2$\;
+        \If{C steps}{ $\theta^- \leftarrow \theta$ }
+    }
+    \end{algorithm}
+\end{frame}
+\begin{frame}{FIRL: Evaluation}
+
+    Three different scenarios:
+    \begin{itemize}
+      \item \textbf{Static:} The phenomenon is static.
+      \item \textbf{Multiple:} There are multiple phenomena.
+      \item \textbf{Dynamic:} The phenomenon is moving.
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.15\textwidth]{img/base}
+        \includegraphics[width=0.15\textwidth]{img/two}
+        \includegraphics[width=0.15\textwidth]{img/moving}
+    \end{figure}
+
+    Under three different solutions:
+    \begin{itemize}
+      \item \textbf{FIRL:} The proposed solution.
+      \item \textbf{Graph Q-learning:} GNN without AC.
+      \item \textbf{Deep Q Learning + AC:} MLP with AC.
+    \end{itemize}
+
+Evaluation divided into:
+  \begin{enumerate}
+    \item \textbf{Training Phase:} Performed in the fixed scenario for a total of 2000 steps.
+    \item \textbf{Evaluation Phase:} Used all scenarios for 64 different runs.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{FIRL: Results}
+  
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
+  \includegraphics[width=0.35\textwidth]{img/coverage-in-time.pdf}
+  \includegraphics[width=0.36\textwidth]{img/reward-in-time.pdf}
 \end{center}
-\begin{exampleblock}{Contribution}
-  \begin{itemize}
-    \item Field-informed reinforcement learning~\cite{acgnn}: fields used as a way to produce a stygmertic representation of the environment.
-    \item Graph neural networks used as a policy function approximator.
-    \item Learning performed with a Deep Graph-Q Learning
-    \item Result: a faster and more scalable policy w.r.t., Deep Graph-Q Learning without field information.
-  \end{itemize}
-\end{exampleblock}
+\begin{center}
+  \fbox{
+  \includegraphics[width=0.25\textwidth]{img/start.png}
+  \includegraphics[width=0.25\textwidth]{img/after.png}
+  \includegraphics[width=0.25\textwidth]{img/end.png}}
+  \end{center}
+\includegraphics[width=\textwidth]{img/coverage-test.pdf}
+\includegraphics[width=0.92\textwidth]{img/coverage-two-test.pdf}
+
 \end{frame}
-%\begin{frame}{Hybrid Aggregate computing -- Algorithms}
-%\begin{exampleblock}{Field-Informed reinforcement learning~\cite{acgnn}}
-%  \begin{itemize}
-%    \item Aggregate computing is used to \emph{\underline{inform}} the learning process
-%    \begin{itemize}
-%      \item Speeding up the training \& Reducing the search space
-%    \end{itemize} 
-%    \item Field used as a way to produce a stygmertic representation of the environment
-%    \item Learning performed through \emph{\underline{deep reinforcement learning}}
-%    \item Graph-neural networks used as a policy function approximator
-%  \end{itemize}
-%\centering
-%  \includegraphics[width=0.6\textwidth]{img/architecture.pdf}
-%\end{exampleblock}
-%\end{frame}
 \begin{frame}[fragile]{Engineering Methodologies}
   \bold{Areas of Improvement:}
 
@@ -574,18 +651,17 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \item \textbf{Programming Models \& APIs:}
   
   \begin{itemize}
-  \item \textbf{FRASP:} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
-  \item \textbf{MacroSwarm:} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
+  \item \textbf{FRASP~\cite{frasp}:} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
+  \item \textbf{MacroSwarm~\cite{macroswarm}:} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
   \end{itemize}
   
   \item \textbf{Distributed Sensing Deployment:}
   
   \begin{itemize}
-  \item \textbf{Swarm Sensing API~\cite{swarm-clustering}:} Distributed and fault-tolerant sensing.
+  \item \textbf{Swarm Sensing API~\cite{swarm-clustering}:} Distributed and fault-tolerant clustering based on spatial-phenomena.
   \item \textbf{High-Level Abstractions for Distributed Sensing~\cite{aguzzi2022dynamic}:} Distributed and fault-tolerant sensing.
   \item \textbf{Pulverised Architecture:~\cite{aguzzi2021towards}} Opportunistic deployment of aggregate programs.
   \end{itemize}
-  
   
   \item \textbf{DevOps; Continuous Integration:}
   
@@ -602,36 +678,30 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \item \textbf{ScaFi-Web~\cite{aguzzi2021scafi}:} Web-based simulator for aggregate computing (useful for teaching and prototyping).
   \end{itemize}
   
-  
 \end{frame}
-\begin{frame}{Engineering Methodologies}
-\begin{exampleblock}{FRASP~\cite{frasp}}
-  
-  Functional reactive approach to \emph{\underline{self-organisation}} programming
-\begin{itemize}
-  \item Inspired by \emph{\underline{functional reactive programming}}, but \emph{\underline{distributed}}
-  \item Implementation in a Scala DSL
-\end{itemize}
-\includegraphics[width=\textwidth]{img/interactions.pdf}
-\end{exampleblock}
+\begin{frame}[fragile]{MacroSwarm -- Overview}
+\large{
+A high-level\footnote{\tiny\fullcite{macroswarm}} compositional framework for expressing and composing swarm behaviors
+}
+\begin{center}
+  \includegraphics[height=2cm]{img/constant-movement.png}
+  \includegraphics[height=2cm]{img/obstracle.png}		
+  \includegraphics[height=2cm]{img/explore-2.png}
+  \includegraphics[height=2cm]{img/flock.png}
+\end{center}
+\begin{center}
+  \includegraphics[height=1.5cm]{img/shapes.png}
+\end{center}
+\begin{center}
+  \includegraphics[height=2.3cm]{img/team-formation.png}
+  \includegraphics[height=2.3cm]{img/circle-formation.png}
+  \includegraphics[height=2.3cm]{img/explore.png}
+\end{center}
 \end{frame}
-\begin{frame}{Engineering Methodologies}
-\begin{exampleblock}{MacroSwarm~\cite{macroswarm}}
-  \begin{itemize}
-    \item An API for expressing \underline{\emph{swarm}} behaviours
-    \item \emph{\underline{Composable}}: behaviours can be composed together
-    \item \emph{\underline{Extensive}}: cover a wide range of swarm behaviours (e.g., aggregation, flocking, ...)
-  \end{itemize}
-\includegraphics[width=\textwidth]{img/architecture-macro.drawio.pdf}
-\end{exampleblock}
-\end{frame}
-
-
-
 \begin{frame}{Conclusion and Future Works}
 \begin{itemize}
-  \item This thesis is a \emph{\underline{systematic}} approach to the engineering of CPSW
-  \item We poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
+  \item This thesis discusses a novel approach to the engineering of CPSW application
+  \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
   \begin{itemize}
     \item \emph{\underline{Learning}}: Field-informed reinforcement learning, collective program sketching, distributed schedulers
     \item \emph{\underline{Tools}}: ScaFi, ScaRLib, ScaFi-Web
@@ -640,7 +710,7 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
   \item Future works:
   \begin{itemize}
     \item Close the reality gap: deploy the aggregate programs on real CPSW, improve the toolchain, leverage realistic simulators (Gazebo, etc)
-    \item Improve the learning algorithms: learn to deploy, learn to adjust runtime execution, etc
+    \item Improve the learning algorithms: learn to deploy, learn to adjust runtime execution, etc.
     \item AC for learning: aggregate computing as a way create resilient infrastructure for learning (e.g., federated learning)
   \end{itemize}
 \end{itemize}
@@ -650,7 +720,7 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
 \centering{
   \Huge{Thank you!}
 }
-\includegraphics[width=\textwidth]{img/contribution.drawio.pdf}
+\includegraphics[width=\textwidth]{img/contribution.drawio.png}
 \end{frame}
 \begin{frame}[allowframebreaks]{References}
   \def\bibfont{\footnotesize}
@@ -661,152 +731,3 @@ Use machine Q-learning adapted for CPSWs to learn adaptive and optimized schedul
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\begin{frame}{Aggregate Computing -- One slide}
-  \hsplit{
-
-  \begin{block}{\footnotesize Self-org-like computational model}
-  \scriptsize
-  
-  \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbours}\vspace{0.1cm}
-  
-  \lbl{behaviour:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
-  
-  
-  \lbl{formal model of executions:} event structures \vspace{0.1cm}
-  
-  %\lbl{semantics:} (1) device; (2) network; (3) global comp.
-  \end{block}
-  
-  %\uncover<3-4>{
-  \begin{block}{}
-  \scriptsize
-  
-  \lbl{abstraction:} \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
-  
-  \lbl{formal core language:} field calculus~\cite{vbdacp:ac:survey:jlamp}\vspace{0.1cm}
-  
-  \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
-  
-  \centering
-  \imgv{0.22}{channel.pdf}
-  \end{block}
-  
-  \tiny \fullcite{vbdacp:ac:survey:jlamp}%\fullcite{beal2015aggregate-programming}
-  
-  %}
-  }{
-  
-  %\uncover<2-4>{
-  \begin{block}{\footnotesize Why?}
-    \scriptsize
-    
-    {\bold{\faThumbsUp}} \, Decouple the collective specification from the IT networks  \vspace{0.1cm}
-    
-    {\bold{\faThumbsUp}} \, Scale naturally with nodes in the systems  \vspace{0.1cm}
-     
-    {\bold{\faThumbsUp}} \, High-level abstractions to devise applications
-    
-    %\lbl{semantics:} (1) device; (2) network; (3) global comp.
-  \end{block}
-  %}
-  
-  %\uncover<4-4>{
-  \begin{block}{} %{Engineering approach}
-  \imgv{0.32}{layerss.pdf}
-  \tiny \fullcite{bpv:aggregate:programming}
-  \end{block}
-  %}
-  }
-  
-\end{frame}
-
-
-\begin{frame}{Hybrid Aggregate computing}
-  \vspace{-0.5cm}
-  \begin{columns}[t]
-  \begin{column}{0.31\textwidth}
-  \begin{exampleblock}{Research roadmap~\cite{DBLP:conf/icdcs/AguzziCV22}}
-    \footnotesize{
-    Highlights goals:
-  \begin{itemize}
-    \item \underline{functionality} (e.g., a certain collective behaviour)
-    \item \underline{non-functionality} (e.g., energy consumption)
-  \end{itemize}}
-  and means:
-  \begin{itemize}
-    \item \underline{algorithms}
-    \item \underline{execution strategy}
-    \item \underline{system structures}
-  \end{itemize}
-    \includegraphics[width=\textwidth]{img/roadmap.pdf}
-  \end{exampleblock}
-  \end{column}
-  
-  \begin{column}{0.31\textwidth}
-  \begin{exampleblock}{Collective Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}}
-    \footnotesize{
-    %% breaks the above sentence in itemize:
-    \begin{itemize}
-      \item \emph{\underline{holes}}: \emph{\underline{blocks}} of the aggregate program depending on \emph{\underline{environment dynamics}}
-      \item \emph{\underline{sketching}}: \emph{\underline{partial}} specification of the aggregate program
-      \item Idea: \emph{\underline{synthesis}} of the \emph{\underline{holes}} by \emph{\underline{learning}} from the \emph{\underline{realistic simulation}}
-    \end{itemize}}
-    \includegraphics[width=\textwidth]{img/synthesis-3.png}
-  \end{exampleblock}
-  \end{column}
-  \begin{column}{0.31\textwidth}
-  \begin{exampleblock}{Distributed schedulers~\cite{DBLP:conf/acsos/AguzziCV22}}
-    \footnotesize{
-    \begin{itemize}
-      \item The aggregate computing model does not \underline{enforce} a global-synchronization
-      \item \emph{\underline{Distributed}} schedulers: \emph{\underline{local}} decisions on the \emph{\underline{rounds}} of the aggregate program
-      \item Idea: \emph{\underline{learning}} the \emph{\underline{best}} scheduling strategy directly by-doing
-    \end{itemize}
-    }
-    \includegraphics[width=\textwidth]{img/algorithm-learning.png}
-  \end{exampleblock}
-  \end{column}  
-  \end{columns}
-  \end{frame}
-
-  \begin{frame}{Tools}
-    \vspace{-0.5cm}
-    \begin{columns}[t]
-      \begin{column}{0.48\textwidth}
-        \begin{exampleblock}{ScaRLib~\cite{domini2023scarlib}}
-          \footnotesize{
-          \begin{itemize}
-            \item A tool for cooperative many agent reinforcement learning
-            \item Support different learning scheme (centralised, decentralised, mixed)
-            \item Binding with state-of-the-art reinforcement learning libraries (e.g., \emph{\underline{PyTorch}})
-          \end{itemize}}
-          \includegraphics[width=\textwidth]{img/flock.png}
-        \end{exampleblock}
-      \end{column}
-      \begin{column}{0.48\textwidth}
-        \begin{exampleblock}{ScaFi-Web~\cite{aguzzi2021scafi}}
-          \footnotesize{
-          \begin{itemize}
-            \item A \emph{\underline{web-based}} simulator for aggregate computing
-            \item Useful for \emph{\underline{teaching}} and \emph{\underline{prototyping}}
-          \end{itemize}}
-          \centering
-          \includegraphics[width=0.5\textwidth]{img/gradient-scafi.png}
-        \end{exampleblock}
-      \end{column}
-    \end{columns}
-  \end{frame}
-
-  \begin{frame}{Engineering Methodologies -- Cont.}
-    \begin{itemize}
-      \item \emph{\underline{Swarm Sensing API}}~\cite{swarm-clustering}: \emph{\underline{distributed}} and \emph{\underline{fault-tollerent}} sensing
-      \item \emph{\underline{Dev Ops for CPSW}}~\cite{casadei2022towards}: \emph{\underline{continuous integration}} of the \emph{\underline{software}} and the \emph{\underline{physical}} parts of the system
-      \item \emph{\underline{High-level abstractions for Distributed sensing}}~\cite{aguzzi2022dynamic}: \emph{\underline{distributed}} and \emph{\underline{fault-tollerent}} sensing
-      \item \emph{\underline{Pulverisation architecture}}~\cite{aguzzi2021towards}: A \emph{\underline{opportunistic}} model to \emph{\underline{deploy}} aggregate programs
-    \end{itemize}
-    \vspace{0.5cm}
-    \includegraphics[width=0.45\textwidth]{img/action-with-multilayer.pdf}
-    \includegraphics[width=0.53\textwidth]{img/screenshot.png}
-    
-  \end{frame}
