@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
 %
-\documentclass[presentation, 9pt,169]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+\documentclass[presentation, 8pt,169]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[T1]{fontenc}
@@ -213,9 +213,9 @@ basicstyle=\ttfamily\scriptsize}
   {\large Systems composed of \textbf{large} sets of components executing \textbf{collective} tasks, strongly relying on component \textbf{interactions}, and showing \textbf{inherent} \emph{adaptivity}.}\\[0.5cm] 
   \begin{figure}
       \centering
-      \includegraphics[width=0.3\textwidth]{img/swarms.jpg}
-      \includegraphics[width=0.3\textwidth]{img/coldplay.jpg}
-      \includegraphics[width=0.3\textwidth]{img/traffic.jpg} 
+      \includegraphics[height=2.3cm]{img/swarms.jpg}
+      \includegraphics[height=2.3cm]{img/coldplay.jpg}
+      \includegraphics[height=2.3cm]{img/traffic.jpg} 
       %\caption{Examples of Cyber-Physical Swarms}
   \end{figure}
   \end{center}
@@ -379,15 +379,13 @@ basicstyle=\ttfamily\scriptsize}
 \end{frame} 
 \begin{frame}{Many-agent Reinforcement Learning}
 
-\begin{alertblock}{A Tentative Formal Model: SwarMDP~\cite{vsovsic2016inverse}}
-    SwarMDP is a formal model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
-    \begin{itemize}
-      \item Agent $\mathbb{A}$: Has observation and action spaces, a reward signal, and a policy.
-      \item Environment $\mathbb{E}$: Has a state space, a population of swarming agents, a transition function, and a global reward function.
-      \item System Evolution: Evolves in discrete time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
-      \item \textbf{Goal}: Learn a policy $\pi$ that maximizes the \textbf{expected return}.
-    \end{itemize}
-\end{alertblock}
+SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
+  \begin{itemize}
+    \item Agent $\mathbb{A}$: Has observation and action spaces, a reward signal, and a policy.
+    \item Environment $\mathbb{E}$: Has a state space, a population of swarming agents, a transition function, and a global reward function.
+    \item System Evolution: Evolves in discrete time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
+    \item \textbf{Goal}: Learn a policy $\pi$ that maximizes the \textbf{expected return}.
+  \end{itemize}
 
 \begin{block}{Learning in SwarMDP}
   \begin{itemize}
@@ -398,8 +396,8 @@ basicstyle=\ttfamily\scriptsize}
     \item Learning: \emph{centralized}, but execution is \textbf{decentralized}.
     \item Algorithms:
       \begin{itemize}
-        \item \underline{Mean-field RL \cite{yang2018mean}}: Learning by considering neighboring agents as an approximation of the global state.
-        \item \underline{Swarm RL \cite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
+        \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: Learning by considering neighboring agents as an approximation of the global state.
+        \item \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
       \end{itemize}
   \end{itemize}
 \end{block}
@@ -437,24 +435,24 @@ basicstyle=\ttfamily\scriptsize}
 %\fbox{\includegraphics[width=0.95\textwidth]{img/contribution.drawio.pdf}}
 %\end{center}
 \end{frame}
-\begin{frame}{Hybrid Aggregate Computing}
+\begin{frame}{Hybrid Aggregate Computing~\footnote[frame]{\fullcite{DBLP:conf/icdcs/AguzziCV22}}}
 
   \textbf{Areas of Improvement:}
   
   \begin{enumerate}
   \item \textbf{Execution Policies for Efficiency:}
       \begin{itemize}
-      \item \textbf{Adaptive Collective Schedulers~\cite{DBLP:conf/acsos/AguzziCV22}:} Shared-experience Q-learning to dynamically optimize execution for convergence speed or resource consumption.
+      \item \textbf{Adaptive Collective Schedulers\footnote{\fullcite{DBLP:conf/acsos/AguzziCV22}:}} Shared-experience Q-learning to dynamically optimize execution for convergence speed or resource consumption.
       \item \textbf{Self-Stabilizing Systems:} Focus on reducing consumption while maintaining the self-healing properties of collectives.
       \end{itemize}
   \item \textbf{Collective Program Synthesis:}
       \begin{itemize}
-      \item \textbf{Program Sketching~\cite{DBLP:conf/coordination/AguzziCV22}:} Q-learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
+      \item \textbf{Program Sketching\footnote{\fullcite{DBLP:conf/coordination/AguzziCV22}}:} Q-learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
       \item \textbf{Goal:} Automate the generation of adaptable blocks, overcoming limitations of heuristic-based approaches.
       \end{itemize}
   \item \textbf{\underline{Many-Agent RL through AC}:}
       \begin{itemize}
-      \item \textbf{Field-Informed RL~\cite{acgnn}:} Aggregate information (fields) guides policy learning in complex CPSW environments.
+      \item \textbf{Field-Informed RL\footnote{\fullcite{acgnn}}:} Aggregate information (fields) guides policy learning in complex CPSW environments.
       \item \textbf{Graph Neural Networks:} Leverage graph neural networks for policy approximation, achieving faster and more scalable learning.
       \end{itemize}
   \end{enumerate}
@@ -492,7 +490,7 @@ basicstyle=\ttfamily\scriptsize}
 \end{frame}
 \begin{frame}{FIRL: Graph Neural Networks}
   \begin{exampleblock}{What}
-    A neural network architecture designed to work with graph-structured data.
+    A neural network architecture designed to work with \textbf{graph-structured} data.
   \end{exampleblock}
 
   \begin{center}
@@ -578,27 +576,7 @@ basicstyle=\ttfamily\scriptsize}
     \end{column}
   \end{columns}
 \end{frame}
-\begin{frame}{FIRL: Algorithm}
-  \begin{algorithm}[H]
-    \KwIn{Environment $\mathbb{E}$, Graph Replay $\mathcal{D}$, Target Network $\theta^-$, Current Network $\theta$, Exploration $\epsilon$}
-    \KwOut{Trained DQN $\theta$}
-    Initialize $\mathcal{D}$, $\theta$, $\theta^- \leftarrow \theta$\;
-    \While{not done}{
-        Observe $G_o$\;
-        $a \leftarrow \begin{cases}
-            \text{random action} & \text{if random } < \epsilon \\
-            argmax_{a_v} Q(G_o, \theta)[v](a_v) & \text{otherwise}
-        \end{cases}$\;
-        Execute $a$, observe $G_r$, $G_o'$\;
-        Store $(G_o, a, G_r, G_o')$ in $\mathcal{D}$\;
-        Sample batch $(G_o^b, a^b, G_r^b, G_o'^b)$ from $\mathcal{D}$\;
-        $y_v \leftarrow G_r^b[v] + \gamma \max_{a'} Q(G_o'^b[v], a'; \theta^-)$\;
-        $y_v^* \leftarrow Q(G_o^b[v], a^b[v]; \theta)$\;
-        $\theta \leftarrow \theta - \alpha \nabla_\theta \frac{1}{|G^b|} (y - y^*)^2$\;
-        \If{C steps}{ $\theta^- \leftarrow \theta$ }
-    }
-    \end{algorithm}
-\end{frame}
+
 \begin{frame}{FIRL: Evaluation}
 
     Three different scenarios:
@@ -644,40 +622,50 @@ Evaluation divided into:
 \includegraphics[width=0.92\textwidth]{img/coverage-two-test.pdf}
 
 \end{frame}
-\begin{frame}[fragile]{Engineering Methodologies}
+\begin{frame}{Engineering Methodologies}
+  \includegraphics[width=\textwidth]{img/eng-part.drawio.png}
+\end{frame}
+\begin{frame}[fragile]{Engineering Methodologies I }
   \bold{Areas of Improvement:}
 
   \begin{enumerate}
   \item \textbf{Programming Models \& APIs:}
   
   \begin{itemize}
-  \item \textbf{FRASP~\cite{frasp}:} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
-  \item \textbf{MacroSwarm~\cite{macroswarm}:} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
+  \item \textbf{FRASP:}\footnote{\fullcite{frasp}} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
+  \item \textbf{MacroSwarm:}~\footnote{\fullcite{macroswarm}} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
+  \item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: A way to express collective behaviors through aggregate computing.
   \end{itemize}
   
-  \item \textbf{Distributed Sensing Deployment:}
+  \item \textbf{Swarm Distributed Sensing}
   
   \begin{itemize}
-  \item \textbf{Swarm Sensing API~\cite{swarm-clustering}:} Distributed and fault-tolerant clustering based on spatial-phenomena.
-  \item \textbf{High-Level Abstractions for Distributed Sensing~\cite{aguzzi2022dynamic}:} Distributed and fault-tolerant sensing.
-  \item \textbf{Pulverised Architecture:~\cite{aguzzi2021towards}} Opportunistic deployment of aggregate programs.
+  \item \textbf{Swarm Sensing Clustering\footnote{\fullcite{swarm-clustering}}:} Distributed clustering based on spatial-phenomena.
+  \item \textbf{Dynamic decentralization domains\footnote{\fullcite{aguzzi2022dynamic}}:} Distributed and fault-tolerant pattern for collective sensing and acting.
   \end{itemize}
-  
-  \item \textbf{DevOps; Continuous Integration:}
-  
-  \begin{itemize}
-  \item \textbf{DevOps for CPSW~\cite{casadei2022towards}:} Continuous integration of software and physical parts of the system.
-  \end{itemize}
-  
-  \end{enumerate}
+\end{enumerate}
 
-  \bold{Tools:}
+\end{frame}
+\begin{frame}{Engineering Methodologies II}
+  \bold{Areas of Improvement:}
+
+  \begin{enumerate}
+  \setcounter{enumi}{2}
+  \item \textbf{DevOps; Deployments:}
   
   \begin{itemize}
-  \item \textbf{ScaRLib~\cite{domini2023scarlib}:} Cooperative multi-agent reinforcement learning tool (supports various learning schemes, integrates with PyTorch).
-  \item \textbf{ScaFi-Web~\cite{aguzzi2021scafi}:} Web-based simulator for aggregate computing (useful for teaching and prototyping).
+  \item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} Continuous integration of software and physical parts of the system.
+  \item \textbf{Pulverised Architecture\footnote{\fullcite{aguzzi2021towards}}} Opportunistic deployment of aggregate programs.
+ 
   \end{itemize}
+  \framebreak
+  \item \textbf{Tools:}
   
+  \begin{itemize}
+  \item \textbf{ScaRLib~\footnote{\fullcite{domini2023scarlib}}:} A library for cooperative many-agent reinforcement learning.
+  \item \textbf{ScaFi~\footnote{\fullcite{casadei2022scafi}}-Web~\footnote{\fullcite{aguzzi2021scafi}}:} Web-based simulator for aggregate computing (Teaching and prototyping).
+  \end{itemize}
+\end{enumerate}
 \end{frame}
 \begin{frame}[fragile]{MacroSwarm -- Overview}
 \large{
