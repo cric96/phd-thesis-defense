@@ -225,7 +225,7 @@ basicstyle=\ttfamily\scriptsize}
   \begin{multicols}{3}
     \begin{itemize}
       \item Swarm robotics
-      \item Crowd of (augmented) people
+      \item Augmented Crowd
       \item Large-scale IoT systems
       \item Smart cities
       \item COMMunity-OrieNted WEARrable Computing Systems (PRIN project)
@@ -237,7 +237,7 @@ basicstyle=\ttfamily\scriptsize}
   \begin{multicols}{3}
     \begin{itemize}
       \item (Unwanted) emergents
-      \item Local to global mapping
+      %\item Local to global mapping
       \item Scale
       \item Failures
       \item Distributed control
@@ -250,9 +250,6 @@ basicstyle=\ttfamily\scriptsize}
   \end{center}
   \begin{center}
     \Large{What are the right \bold{abstractions}?}
-  \end{center}
-  \begin{center}
-    \Large{This thesis focuses on these questions!}
   \end{center}
 \centering
 \end{frame}
@@ -306,7 +303,7 @@ basicstyle=\ttfamily\scriptsize}
 
 \begin{frame}[plain]
 \begin{center}
-\Huge{\bold{Aggregate Computing}}
+\Huge{\bold{Aggregate Computing}\footnote{\fullcite{bpv:aggregate:programming}}}
 \end{center}
 \centering
 \large{Program the aggregate, not the individual}
@@ -315,31 +312,42 @@ basicstyle=\ttfamily\scriptsize}
 \end{frame}
 \begin{frame}{Aggregate Computing -- One slide}
   \hsplit{
-
-  \begin{block}{\footnotesize Self-org-like computational model}
-  \scriptsize
-  
-  \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbors}\vspace{0.1cm}
-  
-  \lbl{behavior:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
-  
-  
-  \lbl{formal model of executions:} event structures \vspace{0.1cm}
-  
-  \end{block}
-  
-  \begin{block}{}
-  \scriptsize
-  
-  \lbl{formal core language:} field calculus~\cite{vbdacp:ac:survey:jlamp}\vspace{0.1cm}
-  
-  \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
-  
-  \centering
-  \imgv{0.22}{channel.pdf}
-  \end{block}
+    \begin{block}{\footnotesize Collective Abstraction} %{Engineering approach}
+      \scriptsize
+      \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
+      
+      \lbl{examples:} \bo{temperature fields}, \bo{actuation fields} \vspace{0.1cm}
+      \begin{center}
+        \includegraphics[width=0.3\textwidth]{img/3d-gradient.png}
+        \includegraphics[width=0.28\textwidth]{img/channel.png}
+        \includegraphics[width=0.3\textwidth]{img/scr-result.png}
+        \end{center}
+    \tiny \fullcite{bpv:aggregate:programming}
+    \end{block}
+    \begin{block}{\footnotesize Self-org-like computational model}
+      \scriptsize
+      
+      \lbl{interaction:} \emph{repeated} msg exchange with \bo{neighbors}\vspace{0.1cm}
+      
+      \lbl{behavior:} \emph{repeated} execution of \enf{async rounds} of \bo{sense -- compute -- (inter)act} \vspace{0.1cm}
+      
+      
+      %\lbl{formal model of executions:} event structures \vspace{0.1cm}
+      
+      \end{block}
   
   }{
+  \begin{block}{\footnotesize Programming Model}
+    \scriptsize
+    
+    \lbl{formal core language:} field calculus\vspace{0.1cm}
+    
+    \lbl{paradigm:} \bo{functional, macro-programming} \vspace{0.1cm} %--- supporting compositionality
+    
+    \centering
+    \imgv{0.22}{channel.pdf}
+  \end{block}  
+    
   \begin{block}{\footnotesize Why?}
     \scriptsize
     
@@ -353,17 +361,7 @@ basicstyle=\ttfamily\scriptsize}
   \end{block}
   %}
   
-  \begin{block}{} %{Engineering approach}
-    \scriptsize
-  \lbl{abstraction:} \bo{computational fields} ($\mathit{dev/evt} \mapsto \mathbb{V}$) \vspace{0.1cm}
-    \lbl{examples:} \bo{temperature fields}, \bo{actuation fields} \vspace{0.1cm}
-    \begin{center}
-      \includegraphics[width=0.3\textwidth]{img/3d-gradient.png}
-      \includegraphics[width=0.28\textwidth]{img/channel.png}
-      \includegraphics[width=0.3\textwidth]{img/scr-result.png}
-      \end{center}
-  \tiny \fullcite{bpv:aggregate:programming}
-  \end{block}
+
   %}
   }
   
@@ -379,12 +377,12 @@ basicstyle=\ttfamily\scriptsize}
 \end{frame} 
 \begin{frame}{Many-agent Reinforcement Learning}
 
-SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
+SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
   \begin{itemize}
-    \item Agent $\mathbb{A}$: Has observation and action spaces, a reward signal, and a policy.
-    \item Environment $\mathbb{E}$: Has a state space, a population of swarming agents, a transition function, and a global reward function.
-    \item System Evolution: Evolves in discrete time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
-    \item \textbf{Goal}: Learn a policy $\pi$ that maximizes the \textbf{expected return}.
+    \item \textbf{Agent} $\mathbb{A}$: consist of \underline{observation} and \underline{action} spaces, a \underline{reward} signal, and a \underline{policy}.
+    \item \textbf{Environment} $\mathbb{E}$: consists of a \underline{state} space, a \underline{population} of swarming agents $\mathbb{A}$, a \underline{transition} function, and a \underline{global} reward function.
+    \item \textbf{System Evolution}: evolves in \underline{discrete} time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
+    \item \textbf{Goal}: learn a policy $\pi$ that maximizes the \textbf{expected return}.
   \end{itemize}
 
 \begin{block}{Learning in SwarMDP}
@@ -393,10 +391,10 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
       \begin{itemize}
         \item The same policy is shared within the population.
       \end{itemize}
-    \item Learning: \emph{centralized}, but execution is \textbf{decentralized}.
+    \item Learning: \emph{centralized}, but execution is \textbf{decentralized} (typically with \emph{shared experiences})
     \item Algorithms:
       \begin{itemize}
-        \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: Learning by considering neighboring agents as an approximation of the global state.
+        \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: learning by considering neighboring agents as an approximation of the global state.
         \item \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
       \end{itemize}
   \end{itemize}
@@ -408,19 +406,20 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
 
   \begin{alertblock}{Engineering Perspective}
     \begin{itemize}
-        \item \emph{API Design}: Bridge the gap between AC and real-world applications.
-        \item \emph{Programming Model}: Develop an intuitive way to express collective behaviors.
-        \item \emph{Intelligent Deployment}: Optimize the deployment of aggregate programs across diverse infrastructures, enhancing adaptability and efficiency.
-        \item \emph{Practical Tooling}: Create user-friendly tools for prototyping and deploying aggregate programs, fostering broader adoption.
-        \item \textbf{\underline{Key Motivation}}: Aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPSWs.
+        \item \textbf{\underline{Current limitations}}: lack of refined abstractions and tools to effectively engineer the complex world of CPSWs.
+        \item \emph{API Design}: bridge the gap between macroprogramming application and real-world applications.
+        \item \emph{Programming Model}: develop an intuitive way to express collective behaviors.
+        \item \emph{Intelligent Deployment}: optimize the deployment of macroprograms across diverse infrastructures, enhancing adaptability and efficiency.
+        \item \emph{Practical Tooling}: create user-friendly tools for prototyping and deploying macroprograms, fostering broader adoption.
+        %\item \textbf{\underline{Key Motivation}}: aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPSWs.
     \end{itemize}
   \end{alertblock}
 
   \begin{alertblock}{Learning Perspective}
     \begin{itemize}
-        \item \emph{AC for Learning}: Utilize aggregate computing to build robust and resilient learning infrastructures, e.g., for federated learning or multi-agent RL.
-        \item \emph{Learning for AC}: Leverage machine learning techniques to dynamically optimize and adapt the aggregate computing model itself.
-        \item \textbf{\underline{Key Motivation}}: Learning is essential to adapt aggregate computing to the highly dynamic and complex nature of real-world environments.
+        \item \textbf{\underline{Current limitations}}: learning and macroprogramming are often treated as separate entities, limiting the potential of both.
+        \item \emph{Macroprogramming for Learning}: utilize macroprogramming so build robust and resilient learning infrastructures, e.g., for federated learning or multi-agent RL.
+        \item \emph{Learning for macroprogramming}: leverage machine learning techniques to dynamically optimize and adapt the macroprogramming model itself.
     \end{itemize}
   \end{alertblock}
 
@@ -442,18 +441,18 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
   \begin{enumerate}
   \item \textbf{Execution Policies for Efficiency:}
       \begin{itemize}
-      \item \textbf{Adaptive Collective Schedulers\footnote{\fullcite{DBLP:conf/acsos/AguzziCV22}:}} Shared-experience Q-learning to dynamically optimize execution for convergence speed or resource consumption.
-      \item \textbf{Self-Stabilizing Systems:} Focus on reducing consumption while maintaining the self-healing properties of collectives.
+      \item \textbf{Adaptive Collective Schedulers\footnote{\fullcite{DBLP:conf/acsos/AguzziCV22}}}: \emph{shared-experience} Q-learning to dynamically optimize execution for convergence speed or resource consumption.
+      \item \textbf{Self-Stabilizing Systems:} focus on reducing consumption while maintaining the self-healing properties of collectives.
       \end{itemize}
   \item \textbf{Collective Program Synthesis:}
       \begin{itemize}
-      \item \textbf{Program Sketching\footnote{\fullcite{DBLP:conf/coordination/AguzziCV22}}:} Q-learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
-      \item \textbf{Goal:} Automate the generation of adaptable blocks, overcoming limitations of heuristic-based approaches.
+      \item \textbf{Program Sketching\footnote{\fullcite{DBLP:conf/coordination/AguzziCV22}}:} Q Learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
+      \item \textbf{Goal:} automate the generation of adaptable blocks, overcoming limitations of heuristic-based approaches.
       \end{itemize}
   \item \textbf{\underline{Many-Agent RL through AC}:}
       \begin{itemize}
-      \item \textbf{Field-Informed RL\footnote{\fullcite{acgnn}}:} Aggregate information (fields) guides policy learning in complex CPSW environments.
-      \item \textbf{Graph Neural Networks:} Leverage graph neural networks for policy approximation, achieving faster and more scalable learning.
+      \item \textbf{Field-Informed RL\footnote{\fullcite{acgnn}}:} aggregated information (fields) guides policy learning in complex CPSW environments.
+      \item \textbf{Graph Neural Networks:} leverage graph neural networks for policy approximation, achieving faster and more scalable learning.
       \end{itemize}
   \end{enumerate}
   
@@ -465,24 +464,22 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
 
   \begin{block}{Problem}
     \begin{itemize}
-      \item \textbf{Collective Aspect}: The state typically lacks a global representation \faArrowRight \, \emph{\underline{partial observability}}.
+      \item \textbf{Collective aspect}: the state typically lacks a global representation \faArrowRight \, \emph{\underline{partial observability}}.
         \begin{itemize}
           \item It is built through communication with neighbors.
         \end{itemize}
-      \item \textbf{Variable Neighborhood}: 
-        \begin{itemize}
-          \item The need for a policy that accounts for neighborhood \emph{\underline{variability}}.
-        \end{itemize}
+      \item \textbf{Variable neighborhood}: the need for a policy that accounts for neighborhood \emph{\underline{variability}}.
+
     \end{itemize}
   \end{block}
 
   \begin{alertblock}{\textbf{Contribution}: Field-Informed Reinforcement Learning\footnote[frame]{\fullcite{acgnn}}} 
     \begin{itemize}
-      \item \textbf{Fields}: Used to produce a \emph{\underline{stigmergic}} representation of the environment.
+      \item \textbf{Fields}: used to produce a \emph{\underline{stigmergic}} representation of the environment.
       \begin{itemize}
-        \item \textbf{GNN}: Policy function approximator that handles neighborhood variability.
-        \item \textbf{Graph-Deep Q Learning}: Learning algorithm.
-        \item \textbf{Aggregate Computing}: Informs the learning process with computational fields.
+        \item \textbf{GNN}: policy function approximator that handles neighborhood variability.
+        \item \textbf{Graph-Deep Q Learning}: the learning algorithm.
+        \item \textbf{Aggregate Computing}: informs the learning process with computational fields.
       \end{itemize}
     \end{itemize}
   \end{alertblock}
@@ -499,16 +496,16 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
 
   \begin{block}{How}
     \begin{itemize}
-      \item \textbf{Message Passing:} Update node representations based on their neighborhood.
-      \item \textbf{Aggregation:} Combine information from neighboring nodes.
-      \item \textbf{Update:} Modify node representations based on the aggregated information.
+      \item \textbf{Message passing:} update node representations based on their neighborhood.
+      \item \textbf{Aggregation:} combine information from neighboring nodes.
+      \item \textbf{Update:} modify node representations based on the aggregated information.
     \end{itemize}
   \end{block}
 
   \begin{alertblock}{Why}
     \begin{itemize}
-      \item \textbf{Dual Interpretation:} Offers both global and local perspectives on graph data.
-      \item \textbf{Handles Variability:} Effectively addresses the varying structure and size of neighborhoods in graphs.
+      \item \textbf{Dual Interpretation:} offers both global and local perspectives on graph data.
+      \item \textbf{Handles Variability (Topology):} effectively addresses the varying structure and size of neighborhoods in graphs.
     \end{itemize}
   \end{alertblock}
 \end{frame}
@@ -519,13 +516,17 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
   \end{block}
   \begin{block}{How}
     \begin{itemize}
-      \item \bold{Graph Experience replay}: store the experience in a replay buffer under the form of graphs
-      \item \bold{Target network}: use a target network to stabilize the learning and using GNNs
+      \item \bold{Graph Experience replay}: store the experience in a replay buffer under the form of graphs.
+      \item \bold{Graph Q-learning}: update the Q-function using the Bellman equation.
+      \begin{itemize}
+        \item $y_v = G_r[v] + \gamma \max_{a'} Q(G_o'[v], a'; \theta^-)$
+      \end{itemize}
     \end{itemize}
   \end{block}
   \begin{alertblock}{Why}
     \begin{itemize}
       \item Handle many-agent through shared experience pattern 
+      \item Fast and scalable learning 
       \item Follow a centralized learning approach but with a decentralized execution (thanks to GNN)
     \end{itemize}
   \end{alertblock}
@@ -559,15 +560,15 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
   \begin{columns}
     \begin{column}{0.5\textwidth}  % Adjusted width 
         \begin{itemize}
-          \item \textbf{Setup}: Group of nodes in a 2D space, neighborhood based on spatial proximity.
-          \item \textbf{Goal}: Maximize the coverage of a spatial phenomenon (fire, pollution, etc.).
+          \item \textbf{Setup}: group of nodes in a 2D space, neighborhood based on spatial proximity.
+          \item \textbf{Goal}: maximize the coverage of a spatial phenomenon (fire, pollution, etc.).
           \item \textbf{Rewards}: 
             \begin{itemize}
-              \item \emph{Inside Phenomenon}: Maximize the number of nodes inside the phenomenon.
-              \item \emph{Cohesion}: Minimize the number of isolated nodes.
-              \item \emph{Coverage}: Maximize the intersection of covered areas.
+              \item \emph{Inside Phenomenon}: maximize the number of nodes inside the phenomenon.
+              \item \emph{Cohesion}: minimize the number of isolated nodes.
+              \item \emph{Coverage}: maximize the intersection of covered areas.
             \end{itemize}
-          \item \textbf{States}: Relative position of nodes and potential field of the phenomenon.
+          \item \textbf{States}: relative position of nodes and potential field of the phenomenon.
         \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}  % Adjusted width to match the text column
@@ -581,9 +582,9 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
 
     Three different scenarios:
     \begin{itemize}
-      \item \textbf{Static:} The phenomenon is static.
-      \item \textbf{Multiple:} There are multiple phenomena.
-      \item \textbf{Dynamic:} The phenomenon is moving.
+      \item \textbf{Static:} the phenomenon is static.
+      \item \textbf{Multiple:} there are multiple phenomena.
+      \item \textbf{Dynamic:} the phenomenon is moving.
     \end{itemize}
     \begin{figure}
         \centering
@@ -594,15 +595,15 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a formal model composed of a 
 
     Under three different solutions:
     \begin{itemize}
-      \item \textbf{FIRL:} The proposed solution.
+      \item \textbf{FIRL:} the proposed solution.
       \item \textbf{Graph Q-learning:} GNN without AC.
       \item \textbf{Deep Q Learning + AC:} MLP with AC.
     \end{itemize}
 
 Evaluation divided into:
   \begin{enumerate}
-    \item \textbf{Training Phase:} Performed in the fixed scenario for a total of 2000 steps.
-    \item \textbf{Evaluation Phase:} Used all scenarios for 64 different runs.
+    \item \textbf{Training Phase:} performed in the fixed scenario for a total of 2000 steps.
+    \item \textbf{Evaluation Phase:} used all scenarios for 64 different runs.
   \end{enumerate}
 \end{frame}
 
@@ -632,16 +633,16 @@ Evaluation divided into:
   \item \textbf{Programming Models \& APIs:}
   
   \begin{itemize}
-  \item \textbf{FRASP:}\footnote{\fullcite{frasp}} Functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
+  \item \textbf{FRASP:}\footnote{\fullcite{frasp}} functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
   \item \textbf{MacroSwarm:}~\footnote{\fullcite{macroswarm}} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
-  \item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: A way to express collective behaviors through aggregate computing.
+  \item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: a way to express collective behaviors through aggregate computing.
   \end{itemize}
   
   \item \textbf{Swarm Distributed Sensing}
   
   \begin{itemize}
-  \item \textbf{Swarm Sensing Clustering\footnote{\fullcite{swarm-clustering}}:} Distributed clustering based on spatial-phenomena.
-  \item \textbf{Dynamic decentralization domains\footnote{\fullcite{aguzzi2022dynamic}}:} Distributed and fault-tolerant pattern for collective sensing and acting.
+  \item \textbf{Swarm Sensing Clustering\footnote{\fullcite{swarm-clustering}}:} distributed clustering based on spatial-phenomena.
+  \item \textbf{Dynamic decentralization domains\footnote{\fullcite{aguzzi2022dynamic}}:} distributed and fault-tolerant pattern for collective sensing and acting.
   \end{itemize}
 \end{enumerate}
 
@@ -654,16 +655,16 @@ Evaluation divided into:
   \item \textbf{DevOps; Deployments:}
   
   \begin{itemize}
-  \item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} Continuous integration of software and physical parts of the system.
-  \item \textbf{Pulverised Architecture\footnote{\fullcite{aguzzi2021towards}}} Opportunistic deployment of aggregate programs.
+  \item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} continuous integration of software and physical parts of the system.
+  \item \textbf{Pulverised Architecture\footnote{\fullcite{aguzzi2021towards}}} opportunistic deployment of aggregate programs.
  
   \end{itemize}
   \framebreak
   \item \textbf{Tools:}
   
   \begin{itemize}
-  \item \textbf{ScaRLib~\footnote{\fullcite{domini2023scarlib}}:} A library for cooperative many-agent reinforcement learning.
-  \item \textbf{ScaFi~\footnote{\fullcite{casadei2022scafi}}-Web~\footnote{\fullcite{aguzzi2021scafi}}:} Web-based simulator for aggregate computing (Teaching and prototyping).
+  \item \textbf{ScaRLib~\footnote{\fullcite{domini2023scarlib}}:} a for cooperative many-agent reinforcement learning.
+  \item \textbf{ScaFi~\footnote{\fullcite{casadei2022scafi}}-Web~\footnote{\fullcite{aguzzi2021scafi}}:} web-based simulator for aggregate computing (Teaching and prototyping).
   \end{itemize}
 \end{enumerate}
 \end{frame}
@@ -688,16 +689,16 @@ A high-level\footnote{\tiny\fullcite{macroswarm}} compositional framework for ex
 \end{frame}
 \begin{frame}{Conclusion and Future Works}
 \begin{itemize}
-  \item This thesis discusses a novel approach to the engineering of CPSW application
+  \item This thesis discusses novel approaches to the engineering CPSW applications
   \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
   \begin{itemize}
-    \item \emph{\underline{Learning}}: Field-informed reinforcement learning, collective program sketching, distributed schedulers
+    \item \emph{\underline{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
     \item \emph{\underline{Tools}}: ScaFi, ScaRLib, ScaFi-Web
     \item \emph{\underline{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
   \end{itemize}
   \item Future works:
   \begin{itemize}
-    \item Close the reality gap: deploy the aggregate programs on real CPSW, improve the toolchain, leverage realistic simulators (Gazebo, etc)
+    \item Close the reality gap: deploy the aggregate programs on real CPSW, improve the toolchain, leverage realistic simulators (Gazebo, etc.)
     \item Improve the learning algorithms: learn to deploy, learn to adjust runtime execution, etc.
     \item AC for learning: aggregate computing as a way create resilient infrastructure for learning (e.g., federated learning)
   \end{itemize}
