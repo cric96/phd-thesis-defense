@@ -61,7 +61,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title[A Soft-Eng Approach for CPSWs!]
+\title[A Soft-Eng Approach for CPSWs]
 {A Language-based Software Engineering Approach for Cyber-Physical Swarms}
 %
 %
@@ -78,24 +78,6 @@
 \renewcommand{\dateseparator}{/}
 \date[\today]{\today}
 %
-\AtBeginSubsection[]
-{
-  \begin{frame}
-  \frametitle{Contents}
-  \tableofcontents[currentsubsection, 
-	sectionstyle=show/shaded, 
-	subsectionstyle=show/shaded]
-  \end{frame}
-}
-\AtBeginSection[]
-{
-  \begin{frame}
-  \frametitle{Contents}
-  \tableofcontents[currentsubsection, 
-	sectionstyle=show/shaded, 
-	subsectionstyle=show/shaded]
-  \end{frame}
-}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstdefinelanguage{scala}{
@@ -207,6 +189,7 @@ basicstyle=\ttfamily\scriptsize}
 
 %%%%
 %/////////
+\section{Context}
 \begin{frame}{Cyber-Physical Swarms}
   \begin{exampleblock}{Definition}
     Systems composed of \textbf{large} sets of \textbf{cyber-physical} components executing \textbf{collective} tasks, strongly relying on local component \textbf{interactions} (\underline{neighborhood-based}), and showing \textbf{inherent} \emph{adaptivity}, \emph{scalability}, and \emph{robustness} properties.
@@ -215,10 +198,9 @@ basicstyle=\ttfamily\scriptsize}
   \begin{multicols}{3}
     \begin{itemize}
       \item Swarm robotics
-      \item Augmented Crowd
+      \item COMMON-WEARS (PRIN)%\footnote{\url{https://informatica.unito.it/do/progetti.pl/Show?_id=4rru}}
       \item Large-scale IoT systems
       \item Smart cities
-      \item COMMunity-OrieNted WEARrable Computing Systems (PRIN project)
     \end{itemize}
   \end{multicols}
   \begin{center}
@@ -263,11 +245,11 @@ basicstyle=\ttfamily\scriptsize}
     \end{itemize}
   \end{exampleblock}
 \end{frame}
-
+\section{State-of-the-art}
 \begin{frame}{State-of-the-art}
   \begin{exampleblock}{Manual Design}
     \begin{itemize}
-    \item Macroprogramming: languages with collective abstraction as first citized of the language.
+    \item \emph{Macroprogramming}: languages with collective abstraction as first citized of the language.
     \begin{itemize}
       \item \textbf{Aggregate computing}: a language for programming collective behaviors based on computational fields.
     \end{itemize}
@@ -275,7 +257,7 @@ basicstyle=\ttfamily\scriptsize}
   \end{exampleblock}
   \begin{exampleblock}{Automatic Design}
   \begin{itemize}
-    \item Machine learning: techniques to learn collective behaviors from data and experiences.
+    \item \emph{Machine learning}: techniques to learn collective behaviors from data and experiences.
     \begin{itemize}
       \item \textbf{Many-agent reinforcement learning}: a multi-agent learning environment in which a large group agents learn to coordinate their actions to achieve a collective goal.
     \end{itemize}
@@ -349,7 +331,7 @@ basicstyle=\ttfamily\scriptsize}
   
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}{}
   \begin{center}
 \huge{\bold{Many-agent Reinforcement Learning}\footnote{\tiny\fullcite{yang2021many}}}\footnote{\tiny\fullcite{DBLP:journals/corr/abs-2209-03859}}
   \end{center}
@@ -405,7 +387,7 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
   \end{alertblock}
 
 \end{frame}
-
+\section{Contribution}
 \begin{frame}{Contribution -- One slide}
 \centering{\huge{\textbf{\underline{Language-based} software engineering for CPSWs}}}
 \\[0.5cm]
@@ -457,11 +439,8 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
   \begin{alertblock}{\textbf{Contribution}: Field-Informed Reinforcement Learning\footnote[frame]{\fullcite{acgnn}}} 
     \begin{itemize}
       \item \textbf{Fields}: used to produce a \emph{\underline{stigmergic}} representation of the environment.
-      \begin{itemize}
-        \item \textbf{GNN}: policy function approximator that handles neighborhood variability.
-        \item \textbf{Graph-Deep Q Learning}: the learning algorithm.
-        \item \textbf{Aggregate Computing}: informs the learning process with computational fields.
-      \end{itemize}
+      \item \textbf{GNN}: policy function approximator that handles neighborhood variability.
+      \item \textbf{Graph-Deep Q Learning}: the learning algorithm.
     \end{itemize}
   \end{alertblock}
 
@@ -493,7 +472,7 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
 
 \begin{frame}{FIRL: Graph-Deep Q Learning}
   \begin{block}{What}
-    A learning algorithm which uses GNN as a policy function approximator
+    A learning algorithm which uses GNN as a Q function approximator
   \end{block}
   \begin{block}{How}
     \begin{itemize}
@@ -621,12 +600,12 @@ Evaluation divided into:
   \item \textbf{MacroSwarm:}~\footnote{\fullcite{macroswarm}} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
   %\item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: a way to express collective behaviors through aggregate computing.
   \end{itemize}
-  
+
   \item \textbf{Swarm Distributed Sensing}
   
   \begin{itemize}
   \item \textbf{Swarm Sensing Clustering\footnote{\fullcite{swarm-clustering}}:} distributed clustering based on spatial-phenomena.
-  \item \textbf{Dynamic decentralization domains\footnote{\fullcite{aguzzi2022dynamic}}:} distributed and fault-tolerant pattern for collective sensing and acting.
+  \item \textbf{Dynamic Decentralization Domains\footnote{\fullcite{aguzzi2022dynamic}}:} distributed and fault-tolerant pattern for collective sensing and acting.
   \end{itemize}
 \end{enumerate}
 
@@ -640,7 +619,7 @@ Evaluation divided into:
   
   \begin{itemize}
   \item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} continuous integration of software and physical parts of the system.
-  \item \textbf{Pulverised Architecture\footnote{\fullcite{aguzzi2021towards}}} opportunistic deployment of aggregate programs.
+  \item \textbf{Pulverized Architecture\footnote{\fullcite{aguzzi2021towards}}} opportunistic deployment of aggregate programs.
  
   \end{itemize}
   \framebreak
@@ -671,22 +650,26 @@ A high-level\footnote{\tiny\fullcite{macroswarm}} compositional framework for ex
   \includegraphics[height=2.3cm]{img/explore.png}
 \end{center}
 \end{frame}
-\begin{frame}{Conclusion and Future Works}
-\begin{itemize}
-  \item This thesis discusses novel approaches to the engineering CPSW applications
-  \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
+\section{Conclusion}
+\begin{frame}{Conclusions and Future Works}
+\begin{alertblock}{Conclusions}
   \begin{itemize}
-    \item \emph{{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
-    \item \emph{{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
-    \item \emph{{Tools}}: ScaFi, ScaRLib, ScaFi-Web
+    \item This thesis discusses novel approaches to the engineering CPSW applications
+    \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
+    \begin{itemize}
+      \item \emph{{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
+      \item \emph{{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
+      \item \emph{{Tools}}: ScaFi, ScaRLib, ScaFi-Web
+    \end{itemize}
   \end{itemize}
-  \item Future works:
+\end{alertblock}
+\begin{block}{Future Works}
   \begin{itemize}
-    \item Close the reality gap: deploy the aggregate programs on real CPSW, improve the toolchain, leverage realistic simulators (Gazebo, etc.)
-    \item Improve the learning algorithms: learn to deploy, learn to adjust runtime execution, etc.
-    \item AC for learning: aggregate computing as a way create resilient infrastructure for learning (e.g., federated learning)
+    \item \emph{Close the reality gap}: deploy the aggregate programs on real CPSW, improve the toolchain, leverage realistic simulators (Gazebo, etc.)
+    \item \emph{Improve the learning algorithms}: learn to deploy, learn to adjust runtime execution, etc.
+    \item \emph{AC for learning}: aggregate computing as a way create resilient infrastructure for learning (e.g., federated learning)
   \end{itemize}
-\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
