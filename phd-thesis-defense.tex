@@ -206,21 +206,10 @@ basicstyle=\ttfamily\scriptsize}
 
 %%%%
 %/////////
-
-\begin{frame}[plain,c]
-  \begin{center}
-  {\Huge \textbf{Cyber-Physical Swarms} (CPSW)}\\
-  {\large Systems composed of \textbf{large} sets of components executing \textbf{collective} tasks, strongly relying on component \textbf{interactions}, and showing \textbf{inherent} \emph{adaptivity}.}\\[0.5cm] 
-  \begin{figure}
-      \centering
-      \includegraphics[height=2.3cm]{img/swarms.jpg}
-      \includegraphics[height=2.3cm]{img/coldplay.jpg}
-      \includegraphics[height=2.3cm]{img/traffic.jpg} 
-      %\caption{Examples of Cyber-Physical Swarms}
-  \end{figure}
-  \end{center}
-\end{frame}
-\begin{frame}{Context -- Cont.}
+\begin{frame}{Cyber-Physical Swarms}
+  \begin{exampleblock}{Definition}
+    Systems composed of \textbf{large} sets of \textbf{cyber-physical} components executing \textbf{collective} tasks, strongly relying on local component \textbf{interactions} (\underline{neighborhood-based}), and showing \textbf{inherent} \emph{adaptivity}, \emph{scalability}, and \emph{robustness} properties.
+\end{exampleblock}
 \begin{alertblock}{Applications}
   \begin{multicols}{3}
     \begin{itemize}
@@ -231,8 +220,13 @@ basicstyle=\ttfamily\scriptsize}
       \item COMMunity-OrieNted WEARrable Computing Systems (PRIN project)
     \end{itemize}
   \end{multicols}
+  \begin{center}
+    \includegraphics[height=1.5cm]{img/swarms.jpg}
+    \includegraphics[height=1.5cm]{img/coldplay.jpg}
+    \includegraphics[height=1.5cm]{img/traffic.jpg} 
+    %\caption{Examples of Cyber-Physical Swarms}
+  \end{center}
 \end{alertblock}
-
 \begin{block}{Challenges}
   \begin{multicols}{3}
     \begin{itemize}
@@ -245,13 +239,13 @@ basicstyle=\ttfamily\scriptsize}
     \end{itemize}
   \end{multicols}
 \end{block}
-\begin{center}
-  \Large{How can we \bold{engineer} such systems?}
-  \end{center}
-  \begin{center}
-    \Large{What are the right \bold{abstractions}?}
-  \end{center}
-\centering
+%\begin{center}
+%  \large{How can we \bold{engineer} such systems?}
+%  \end{center}
+%  \begin{center}
+%    \large{What are the right \bold{abstractions}?}
+%  \end{center}
+%\centering
 \end{frame}
 \begin{frame}{Thesis Goal}
   \begin{alertblock}{Thesis Goal}
@@ -270,38 +264,25 @@ basicstyle=\ttfamily\scriptsize}
 \end{frame}
 
 \begin{frame}{State-of-the-art}
-
   \begin{exampleblock}{Manual Design}
-    Approaches in which the collective behavior is \emph{\underline{manually}} designed:
     \begin{itemize}
-      \item Finite state machines, rule-based systems, etc.
-        \begin{itemize}
-          \item Bottom-up, high knowledge requirements, and the collective behavior emerges.
-        \end{itemize}
-      \item Programming languages with primitives and \emph{collective} abstractions for CPSW (macroprogramming):
-        \begin{itemize}
-          \item Buzz: a language for programming swarms of drones.
-          \item \textbf{Aggregate computing}: a language for programming collective behaviors based on computational fields.
-        \end{itemize}
-    \end{itemize}  
-  \end{exampleblock}
-
-  \begin{exampleblock}{Automatic Design}
+    \item Macroprogramming: languages with collective abstraction as first citized of the language.
     \begin{itemize}
-      \item Genetic algorithms, evolutionary strategies, etc.
-        \begin{itemize}
-          \item \emph{\underline{Black-box}} approach, not predictable, hard to scale up in complexity.
-        \end{itemize}
-      \item Single-agent machine learning (e.g., reinforcement learning):
-        \begin{itemize}
-          \item \emph{\underline{Single-agent}} not suitable for collective behaviors (i.e., uncontrolled emergents).
-        \end{itemize}
-      \item \textbf{Many-agent reinforcement learning}: a way to learn collective behaviors with a large population of agents.
+      \item \textbf{Aggregate computing}: a language for programming collective behaviors based on computational fields.
     \end{itemize}
+  \end{itemize}
+  \end{exampleblock}
+  \begin{exampleblock}{Automatic Design}
+  \begin{itemize}
+    \item Machine learning: techniques to learn collective behaviors from data and experiences.
+    \begin{itemize}
+      \item \textbf{Many-agent reinforcement learning}: a multi-agent learning environment in which a large group agents learn to coordinate their actions to achieve a collective goal.
+    \end{itemize}
+  \end{itemize}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
 \begin{center}
 \Huge{\bold{Aggregate Computing}\footnote{\fullcite{bpv:aggregate:programming}}}
 \end{center}
@@ -372,29 +353,32 @@ basicstyle=\ttfamily\scriptsize}
 \huge{\bold{Many-agent Reinforcement Learning}\footnote{\tiny\fullcite{yang2021many}}}\footnote{\tiny\fullcite{DBLP:journals/corr/abs-2209-03859}}
   \end{center}
   \begin{center}
-    \large{A multi-agent learning environment in which a \bold{large} group agents learn to \bold{coordinate} their actions to achieve a \emph{\underline{collective}} goal}.
+    \large{A multi-agent learning environment in which a \bold{large} group agents learn to \bold{coordinate} their actions to achieve a \emph{\underline{collective}} goal through a sequential interaction with the environment}.
   \end{center}
 \end{frame} 
 \begin{frame}{Many-agent Reinforcement Learning}
 
-SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$:
-  \begin{itemize}
-    \item \textbf{Agent} $\mathbb{A}$: consist of \underline{observation} and \underline{action} spaces, a \underline{reward} signal, and a \underline{policy}.
-    \item \textbf{Environment} $\mathbb{E}$: consists of a \underline{state} space, a \underline{population} of swarming agents $\mathbb{A}$, a \underline{transition} function, and a \underline{global} reward function.
-    \item \textbf{System Evolution}: evolves in \underline{discrete} time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
-    \item \textbf{Goal}: learn a policy $\pi$ that maximizes the \textbf{expected return}.
-  \end{itemize}
-
+SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{swarming agent} $\mathbb{A}$ and an \emph{environment} $\mathbb{E}$
+  %$\begin{itemize}
+  %  \item \textbf{Agent} $\mathbb{A}$: consist of \underline{observation} and \underline{action} spaces, a \underline{reward} signal, and a \underline{policy}.
+  %  \item \textbf{Environment} $\mathbb{E}$: consists of a \underline{state} space, a \underline{population} of swarming agents $\mathbb{A}$, a \underline{transition} function, and a \underline{global} reward function.
+  %  \item \textbf{System Evolution}: evolves in \underline{discrete} time steps, where agents $\mathbb{A}$ interact with the environment $\mathbb{E}$ by executing actions and receiving rewards.
+  %  \item \textbf{Goal}: learn a policy $\pi$ that maximizes the \textbf{expected return}.
+  %\end{itemize}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/swarmdp.drawio.pdf}
+\end{center}
 \begin{block}{Learning in SwarMDP}
   \begin{itemize}
+    \item Goal: find a policy $\pi$ that maximizes the long term collective \textbf{return}
     \item SwarMDP \faArrowRight \, large-scale handling via a \textbf{homogeneous} policy:
       \begin{itemize}
         \item The same policy is shared within the population.
       \end{itemize}
-    \item Learning: \emph{centralized}, but execution is \textbf{decentralized} (typically with \emph{shared experiences})
+    \item Training: \emph{centralized}, but execution is \textbf{decentralized} (typically with \emph{shared experiences})
     \item Algorithms:
       \begin{itemize}
-        \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: learning by considering neighboring agents as an approximation of the global state.
+     %   \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: learning by considering neighboring agents as an approximation of the global state.
         \item \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
       \end{itemize}
   \end{itemize}
@@ -517,11 +501,15 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
   \begin{block}{How}
     \begin{itemize}
       \item \bold{Graph Experience replay}: store the experience in a replay buffer under the form of graphs.
-      \item \bold{Graph Q-learning}: update the Q-function using the Bellman equation.
-      \begin{itemize}
-        \item $y_v = G_r[v] + \gamma \max_{a'} Q(G_o'[v], a'; \theta^-)$
-      \end{itemize}
+      \item \bold{Learning step:} follow the swarMDP model.
+      %\item \bold{Graph Q-learning}: update the Q-function using the Bellman equation.
+      %\begin{itemize}
+      %  \item $y_v = G_r[v] + \gamma \max_{a'} Q(G_o'[v], a'; \theta^-)$
+      %\end{itemize}
     \end{itemize}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/architecture.pdf}
+  
   \end{block}
   \begin{alertblock}{Why}
     \begin{itemize}
@@ -531,13 +519,12 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
     \end{itemize}
   \end{alertblock}
 \end{frame}
-\begin{frame}{FIRL: Overall learning step}
-\includegraphics[width=\textwidth]{img/architecture.pdf}
-\end{frame}
+%\begin{frame}{FIRL: Overall learning step}
+%\includegraphics[width=\textwidth]{img/architecture.pdf}
+%\end{frame}
 \begin{frame}{FIRL: Algorithm}
   \begin{algorithm}[H]
     \KwIn{Environment $\mathbb{E}$, Graph Replay $\mathcal{D}$, Target Network $\theta^-$, Current Network $\theta$, Exploration $\epsilon$}
-    \KwOut{Trained DQN $\theta$}
     Initialize $\mathcal{D}$, $\theta$, $\theta^- \leftarrow \theta$\;
     \While{not done}{
         Observe $G_o$\;
@@ -626,7 +613,7 @@ Evaluation divided into:
 \begin{frame}{Engineering Methodologies}
   \includegraphics[width=\textwidth]{img/eng-part.drawio.png}
 \end{frame}
-\begin{frame}[fragile]{Engineering Methodologies I }
+\begin{frame}[fragile]{Engineering Methodologies I}
   \bold{Areas of Improvement:}
 
   \begin{enumerate}
@@ -693,8 +680,8 @@ A high-level\footnote{\tiny\fullcite{macroswarm}} compositional framework for ex
   \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
   \begin{itemize}
     \item \emph{\underline{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
-    \item \emph{\underline{Tools}}: ScaFi, ScaRLib, ScaFi-Web
     \item \emph{\underline{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
+    \item \emph{\underline{Tools}}: ScaFi, ScaRLib, ScaFi-Web
   \end{itemize}
   \item Future works:
   \begin{itemize}
