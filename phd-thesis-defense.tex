@@ -198,7 +198,7 @@ basicstyle=\ttfamily\scriptsize}
   \begin{multicols}{3}
     \begin{itemize}
       \item Swarm robotics
-      \item COMMON-WEARS (PRIN)%\footnote{\url{https://informatica.unito.it/do/progetti.pl/Show?_id=4rru}}
+      \item Augmented crowd %COMMON-WEARS (PRIN)%\footnote{\url{https://informatica.unito.it/do/progetti.pl/Show?_id=4rru}}
       \item Large-scale IoT systems
       \item Smart cities
     \end{itemize}
@@ -263,6 +263,12 @@ basicstyle=\ttfamily\scriptsize}
     \end{itemize}
   \end{itemize}
   \end{exampleblock}
+  \begin{block}{Current limitations}
+    \begin{itemize}
+    \item \emph{Engineering perspectives}: lack of refined abstractions and tools to effectively engineer the complex world of CPSWs.
+      \item \emph{Learning perspectives}: learning and macroprogramming are often treated as separate entities, limiting the potential of both.
+    \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -319,7 +325,7 @@ basicstyle=\ttfamily\scriptsize}
     
     {\bold{\faThumbsUp}} \, Scale naturally with nodes in the systems  \vspace{0.1cm}
      
-    {\bold{\faThumbsUp}} \, High-level abstractions to devise applications
+    %{\bold{\faThumbsUp}} \, High-level abstractions to devise applications
     
     %\lbl{semantics:} (1) device; (2) network; (3) global comp.
   \end{block}
@@ -359,32 +365,9 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
         \item The same policy is shared within the population.
       \end{itemize}
     \item Training: \emph{centralized}, but execution is \textbf{decentralized} (typically with \emph{shared experiences})
-    \item Algorithm: \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
+    %\item Algorithm: \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
   \end{itemize}
 \end{block}
-
-\end{frame}
-
-\begin{frame}{Going Beyond the State-of-the-Art}
-
-  \begin{alertblock}{Engineering Perspective}
-    \begin{itemize}
-        \item \textbf{\underline{Current limitations}}: lack of refined abstractions and tools to effectively engineer the complex world of CPSWs.
-        \item \emph{API Design}: bridge the gap between macroprogramming application and real-world applications.
-        \item \emph{Programming Model}: develop an intuitive way to express collective behaviors.
-        \item \emph{Intelligent Deployment}: optimize the deployment of macroprograms across diverse infrastructures, enhancing adaptability and efficiency.
-        \item \emph{Practical Tooling}: create user-friendly tools for prototyping and deploying macroprograms, fostering broader adoption.
-        %\item \textbf{\underline{Key Motivation}}: aggregate computing requires refined abstractions and tools to effectively engineer the complex world of CPSWs.
-    \end{itemize}
-  \end{alertblock}
-
-  \begin{alertblock}{Learning Perspective}
-    \begin{itemize}
-        \item \textbf{\underline{Current limitations}}: learning and macroprogramming are often treated as separate entities, limiting the potential of both.
-        \item \emph{Macroprogramming for Learning}: utilize macroprogramming so build robust and resilient learning infrastructures, e.g., for federated learning or multi-agent RL.
-        \item \emph{Learning for macroprogramming}: leverage machine learning techniques to dynamically optimize and adapt the macroprogramming model itself.
-    \end{itemize}
-  \end{alertblock}
 
 \end{frame}
 \section{Contribution}
@@ -404,12 +387,12 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
   \begin{enumerate}
   \item \textbf{Execution Policies for Efficiency:}
       \begin{itemize}
-      \item \textbf{Adaptive Collective Schedulers\footnote{\fullcite{DBLP:conf/acsos/AguzziCV22}}}: \emph{shared-experience} Q-learning to dynamically optimize execution for convergence speed or resource consumption.
+      \item \textbf{Adaptive Collective Schedulers\footnote{\fullcite{DBLP:conf/acsos/AguzziCV22}}}: \emph{shared-experience} Q-Learning to dynamically optimize execution for convergence speed or resource consumption.
       \item \textbf{Self-Stabilizing Systems:} focus on reducing consumption while maintaining the self-healing properties of collectives.
       \end{itemize}
   \item \textbf{Collective Program Synthesis:}
       \begin{itemize}
-      \item \textbf{Program Sketching\footnote{\fullcite{DBLP:conf/coordination/AguzziCV22}}:} Q Learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
+      \item \textbf{Program Sketching\footnote{\fullcite{DBLP:conf/coordination/AguzziCV22}}:} Q-Learning for completing partial programs, tailoring coordination blocks to specific environmental dynamics (e.g., mobility, failures).
       \item \textbf{Goal:} automate the generation of adaptable blocks, overcoming limitations of heuristic-based approaches.
       \end{itemize}
   \item \textbf{\underline{Many-Agent RL through AC}:}
@@ -440,7 +423,7 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
     \begin{itemize}
       \item \textbf{Fields}: used to produce a \emph{\underline{stigmergic}} representation of the environment.
       \item \textbf{GNN}: policy function approximator that handles neighborhood variability.
-      \item \textbf{Graph-Deep Q Learning}: the learning algorithm.
+      \item \textbf{Graph-Deep Q-Learning}: the learning algorithm.
     \end{itemize}
   \end{alertblock}
 
@@ -470,7 +453,7 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
   \end{alertblock}
 \end{frame}
 
-\begin{frame}{FIRL: Graph-Deep Q Learning}
+\begin{frame}{FIRL: Graph-Deep Q-Learning}
   \begin{block}{What}
     A learning algorithm which uses GNN as a Q function approximator
   \end{block}
@@ -559,8 +542,8 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
     Under three different solutions:
     \begin{itemize}
       \item \textbf{FIRL:} the proposed solution.
-      \item \textbf{Graph Q-learning:} GNN without AC.
-      \item \textbf{Deep Q Learning + AC:} MLP with AC.
+      \item \textbf{Graph Q-Learning:} GNN without AC.
+      \item \textbf{Deep Q-Learning + AC:} MLP with AC.
     \end{itemize}
 
 Evaluation divided into:
@@ -607,22 +590,15 @@ Evaluation divided into:
   \item \textbf{Swarm Sensing Clustering\footnote{\fullcite{swarm-clustering}}:} distributed clustering based on spatial-phenomena.
   \item \textbf{Dynamic Decentralization Domains\footnote{\fullcite{aguzzi2022dynamic}}:} distributed and fault-tolerant pattern for collective sensing and acting.
   \end{itemize}
-\end{enumerate}
 
-\end{frame}
-\begin{frame}{Engineering Methodologies II}
-  \bold{Areas of Improvement:}
-
-  \begin{enumerate}
-  \setcounter{enumi}{2}
-  \item \textbf{DevOps; Deployments:}
+  %\item \textbf{DevOps; Deployments:}
   
-  \begin{itemize}
-  \item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} continuous integration of software and physical parts of the system.
-  \item \textbf{Pulverized Architecture\footnote{\fullcite{aguzzi2021towards}}} opportunistic deployment of aggregate programs.
+  %\begin{itemize}
+  %\item \textbf{DevOps for CPSW\footnote{\fullcite{casadei2022towards}}:} continuous integration of software and physical parts of the system.
+  %\item \textbf{Pulverized Architecture\footnote{\fullcite{aguzzi2021towards}}} opportunistic deployment of aggregate programs.
  
-  \end{itemize}
-  \framebreak
+  %\end{itemize}
+  %\framebreak
   \item \textbf{Tools:}
   
   \begin{itemize}
