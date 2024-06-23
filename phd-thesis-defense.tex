@@ -24,6 +24,7 @@
 \usepackage{multicol}
 \usepackage{tcolorbox}
 \usepackage{etoolbox}
+\usepackage{FiraSans}
 \usepackage[ruled]{algorithm2e}
 \BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
 \AfterEndEnvironment{minted}{\end{tcolorbox}}%
@@ -376,11 +377,7 @@ SwarMDP\footnote{\fullcite{vsovsic2016inverse}} is a model composed of a \emph{s
         \item The same policy is shared within the population.
       \end{itemize}
     \item Training: \emph{centralized}, but execution is \textbf{decentralized} (typically with \emph{shared experiences})
-    \item Algorithms:
-      \begin{itemize}
-     %   \item \underline{Mean-field RL}\footnote[frame]{\fullcite{yang2018mean}}: learning by considering neighboring agents as an approximation of the global state.
-        \item \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
-      \end{itemize}
+    \item Algorithm: \underline{Swarm RL}\footnote[frame]{\fullcite{iima2008swarm}}: A way to learn the Q-function in a swarm of agents.
   \end{itemize}
 \end{block}
 
@@ -597,18 +594,18 @@ Evaluation divided into:
 \begin{frame}[allowframebreaks]{FIRL: Results}
   
 \begin{center}
-  \includegraphics[width=0.35\textwidth]{img/coverage-in-time.pdf}
-  \includegraphics[width=0.36\textwidth]{img/reward-in-time.pdf}
+  \includegraphics[width=0.25\textwidth]{img/coverage-in-time.pdf}
+  \includegraphics[width=0.25\textwidth]{img/reward-in-time.pdf}
 \end{center}
-\begin{center}
-  \fbox{
-  \includegraphics[width=0.25\textwidth]{img/start.png}
-  \includegraphics[width=0.25\textwidth]{img/after.png}
-  \includegraphics[width=0.25\textwidth]{img/end.png}}
-  \end{center}
-\includegraphics[width=\textwidth]{img/coverage-test.pdf}
-\includegraphics[width=0.92\textwidth]{img/coverage-two-test.pdf}
 
+  \centering
+\includegraphics[width=0.8\textwidth]{img/coverage-test.pdf}
+%\includegraphics[width=0.92\textwidth]{img/coverage-two-test.pdf}
+\begin{center}
+\includegraphics[width=0.15\textwidth]{img/start.png}
+\includegraphics[width=0.15\textwidth]{img/after.png}
+\includegraphics[width=0.15\textwidth]{img/end.png}
+\end{center}
 \end{frame}
 \begin{frame}{Engineering Methodologies}
   \includegraphics[width=\textwidth]{img/eng-part.drawio.png}
@@ -622,7 +619,7 @@ Evaluation divided into:
   \begin{itemize}
   \item \textbf{FRASP:}\footnote{\fullcite{frasp}} functional reactive approach for self-organization programming (distributed, inspired by functional reactive programming).
   \item \textbf{MacroSwarm:}~\footnote{\fullcite{macroswarm}} API for expressing and composing swarm behaviors (extensive, covers various behaviors like aggregation and flocking).
-  \item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: a way to express collective behaviors through aggregate computing.
+  %\item \textbf{Collective Autonomy}~\footnote{\fullcite{casadei2021programming}}: a way to express collective behaviors through aggregate computing.
   \end{itemize}
   
   \item \textbf{Swarm Distributed Sensing}
@@ -679,9 +676,9 @@ A high-level\footnote{\tiny\fullcite{macroswarm}} compositional framework for ex
   \item This thesis discusses novel approaches to the engineering CPSW applications
   \item This poses the basis for a \emph{\underline{language-based}} approach to CPSW, putting together:
   \begin{itemize}
-    \item \emph{\underline{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
-    \item \emph{\underline{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
-    \item \emph{\underline{Tools}}: ScaFi, ScaRLib, ScaFi-Web
+    \item \emph{{Learning}}: field-informed reinforcement learning, collective program sketching, distributed schedulers
+    \item \emph{{Methodologies}}: FRASP, MacroSwarm, Swarm-Sensing API
+    \item \emph{{Tools}}: ScaFi, ScaRLib, ScaFi-Web
   \end{itemize}
   \item Future works:
   \begin{itemize}
